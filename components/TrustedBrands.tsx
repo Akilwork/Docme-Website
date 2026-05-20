@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
+import InfinityBrand from './ui/infinity-brand'
 
 const TrustedBrands = () => {
   // Company logos from your assets folder
@@ -38,81 +38,13 @@ const TrustedBrands = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-violet-500 mx-auto rounded-full" />
         </motion.div>
 
-        {/* Scrolling Brand Logos */}
-        <div className="relative">
-          {/* Gradient Overlays */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-navy-900 to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-navy-900 to-transparent z-10" />
-          
-          {/* Infinity Scrolling Container */}
-          <div className="overflow-hidden">
-            <style jsx>{`
-              @keyframes infinite-scroll {
-                from { 
-                  transform: translateX(0); 
-                }
-                to { 
-                  transform: translateX(-100%); 
-                }
-              }
-            `}</style>
-            
-            <div className='w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]'>
-              {/* First set of logos */}
-              <ul 
-                className='flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none'
-                style={{ animation: 'infinite-scroll 30s linear infinite' }}
-              >
-                {brands.map((brand, index) => (
-                  <li key={`first-${index}`} className="flex-shrink-0">
-                    <motion.div
-                      whileHover={{ 
-                        scale: 1.05,
-                        filter: 'brightness(1.2)',
-                      }}
-                      className='w-32 h-20 flex items-center justify-center p-4 rounded-xl glass-dark hover:glow-blue transition-all duration-300 cursor-pointer group'
-                    >
-                      <Image
-                        src={brand.logo}
-                        alt={brand.name}
-                        width={120}
-                        height={60}
-                        className='max-w-full max-h-full object-contain filter brightness-75 group-hover:brightness-100 transition-all duration-300'
-                      />
-                    </motion.div>
-                  </li>
-                ))}
-              </ul>
-              
-              {/* Duplicate set for seamless loop */}
-              <ul 
-                className='flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none'
-                aria-hidden='true'
-                style={{ animation: 'infinite-scroll 30s linear infinite' }}
-              >
-                {brands.map((brand, index) => (
-                  <li key={`second-${index}`} className="flex-shrink-0">
-                    <motion.div
-                      whileHover={{ 
-                        scale: 1.05,
-                        filter: 'brightness(1.2)',
-                      }}
-                      className='w-32 h-20 flex items-center justify-center p-4 rounded-xl glass-dark hover:glow-blue transition-all duration-300 cursor-pointer group'
-                    >
-                      <Image
-                        src={brand.logo}
-                        alt={brand.name}
-                        width={120}
-                        height={60}
-                        className='max-w-full max-h-full object-contain filter brightness-75 group-hover:brightness-100 transition-all duration-300'
-                      />
-                    </motion.div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
+        {/* Infinity Brand Animation */}
+        <InfinityBrand 
+          brands={brands} 
+          speed="normal" 
+          pauseOnHover={true}
+          className="w-full"
+        />
 
         {/* Stats Row */}
         <motion.div
