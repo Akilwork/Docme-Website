@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
 
@@ -19,8 +19,6 @@ export const metadata: Metadata = {
   description: 'Scalable software platforms, AI-powered systems, and enterprise infrastructure solutions transforming modern institutions.',
   keywords: 'ERP, Educational Software, Enterprise Solutions, AI Automation, Digital Transformation',
   authors: [{ name: 'DOCME Team' }],
-  viewport: 'width=device-width, initial-scale=1',
-  themeColor: '#4f46e5',
   openGraph: {
     title: 'DOCME - Building Intelligent Digital Ecosystems',
     description: 'Scalable software platforms, AI-powered systems, and enterprise infrastructure solutions transforming modern institutions.',
@@ -32,6 +30,12 @@ export const metadata: Metadata = {
     title: 'DOCME - Building Intelligent Digital Ecosystems',
     description: 'Scalable software platforms, AI-powered systems, and enterprise infrastructure solutions transforming modern institutions.',
   },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#4f46e5',
 }
 
 export default function RootLayout({

@@ -4,10 +4,12 @@ import HeroSection from '@/components/HeroSection'
 import TrustedBrands from '@/components/TrustedBrands'
 import BusinessModelSection from '@/components/BusinessModelSection'
 import EcosystemSection from '@/components/EcosystemSection'
-import WhyChooseSection from '@/components/WhyChooseSection'
+import BentoGridSection from '@/components/BentoGridSection'
+
 import SolutionsSection from '@/components/SolutionsSection'
 import ProductShowcase from '@/components/ProductShowcase'
 import TechnologySection from '@/components/TechnologySection'
+import PortfolioSection from '@/components/PortfolioSection'
 import GrowthSection from '@/components/GrowthSection'
 import TestimonialsSection from '@/components/TestimonialsSection'
 import ProcessSection from '@/components/ProcessSection'
@@ -21,10 +23,12 @@ export default function Home() {
       <TrustedBrands />
       <BusinessModelSection />
       <EcosystemSection />
-      <WhyChooseSection />
+      <BentoGridSection />
+
       <SolutionsSection />
       <ProductShowcase />
       <TechnologySection />
+      <PortfolioSection />
       <GrowthSection />
       <TestimonialsSection />
       <ProcessSection />

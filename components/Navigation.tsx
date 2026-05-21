@@ -7,14 +7,31 @@ import { Menu, X } from 'lucide-react'
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [visible, setVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+      const currentScrollY = window.scrollY
+      
+      // Update scrolled state for background blur effect
+      setScrolled(currentScrollY > 20)
+      
+      // Hide/show navigation based on scroll direction
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down & past 100px
+        setVisible(false)
+      } else {
+        // Scrolling up or at top
+        setVisible(true)
+      }
+      
+      setLastScrollY(currentScrollY)
     }
-    window.addEventListener('scroll', handleScroll)
+    
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [lastScrollY])
 
   const navItems = [
     { name: 'Home', href: '#home' },
@@ -27,7 +44,10 @@ const Navigation = () => {
   return (
     <motion.nav
       initial={{ y: -100 }}
-      animate={{ y: 0 }}
+      animate={{ 
+        y: visible ? 0 : -100,
+        transition: { duration: 0.3, ease: 'easeInOut' }
+      }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
           ? 'bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-slate-800' 

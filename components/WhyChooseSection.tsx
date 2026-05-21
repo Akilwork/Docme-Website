@@ -8,8 +8,7 @@ import {
   Layers, 
   TrendingUp, 
   Clock, 
-  Users, 
-  Database,
+  Users,
   ArrowRight,
   CheckCircle
 } from 'lucide-react'

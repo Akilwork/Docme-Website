@@ -166,25 +166,7 @@ const BusinessModelSection = () => {
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="text-center mt-16"
-        >
-          <motion.button
-            whileHover={{ 
-              scale: 1.05,
-              boxShadow: '0 0 30px rgba(139, 92, 246, 0.4)'
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-gradient-to-r from-violet-500 to-indigo-500 text-white rounded-xl font-semibold hover:from-violet-600 hover:to-indigo-600 transition-all duration-300 cursor-pointer"
-          >
-            Learn More About Our Approach
-          </motion.button>
-        </motion.div>
+
       </div>
     </section>
   )

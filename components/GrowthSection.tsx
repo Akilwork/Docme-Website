@@ -3,12 +3,10 @@
 import { motion } from 'framer-motion'
 import { 
   TrendingUp, 
-  MapPin, 
   Users, 
   Building, 
   DollarSign, 
   Globe,
-  BarChart3,
   Calendar,
   Target,
   Award
@@ -245,7 +243,7 @@ const GrowthSection = () => {
           </div>
         </motion.div>
 
-        {/* Growth Timeline */}
+        {/* Growth Timeline - Modern Stepped Design */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -253,7 +251,7 @@ const GrowthSection = () => {
           transition={{ duration: 0.8, delay: 0.7 }}
           className="mb-16"
         >
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <h3 className="text-3xl font-bold text-white mb-4">
               Our Growth Journey
             </h3>
@@ -262,50 +260,113 @@ const GrowthSection = () => {
             </p>
           </div>
           
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-500 via-violet-500 to-emerald-500 rounded-full" />
-            
-            <div className="space-y-16">
+          {/* Modern Stepped Timeline */}
+          <div className="relative max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {timeline.map((item, index) => (
                 <motion.div
                   key={item.year}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.8 + index * 0.1 }}
-                  className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+                  transition={{ 
+                    duration: 0.6, 
+                    delay: 0.8 + index * 0.15,
+                    type: "spring",
+                    stiffness: 100
+                  }}
+                  whileHover={{ 
+                    y: -12, 
+                    scale: 1.05,
+                    rotateY: 5,
+                    rotateX: 5
+                  }}
+                  className="relative group cursor-pointer"
+                  style={{ 
+                    transformStyle: 'preserve-3d',
+                    perspective: '1000px'
+                  }}
                 >
-                  <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
-                    <div className="glass-dark rounded-2xl p-6 hover:glow-blue transition-all duration-300 cursor-pointer group">
-                      <div className={`inline-flex items-center space-x-2 px-3 py-1 bg-gradient-to-r ${item.color} rounded-full text-white text-sm font-medium mb-3`}>
-                        <Calendar className="w-4 h-4" />
-                        <span>{item.year}</span>
+                  {/* Card Container */}
+                  <div className="relative h-full">
+                    {/* Year Badge - Floating */}
+                    <motion.div
+                      initial={{ scale: 0, rotate: -180 }}
+                      whileInView={{ scale: 1, rotate: 0 }}
+                      transition={{ delay: 1 + index * 0.1, type: "spring" }}
+                      className={`absolute -top-4 -right-4 z-20 w-16 h-16 bg-gradient-to-br ${item.color} rounded-2xl flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform`}
+                    >
+                      <span className="text-white font-bold text-sm">{item.year}</span>
+                    </motion.div>
+
+                    {/* Main Card */}
+                    <div className="glass-dark rounded-3xl p-8 h-full border border-white/10 group-hover:border-white/20 transition-all duration-500 relative overflow-hidden">
+                      {/* Background Glow Effect */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-3xl`} />
+                      
+                      {/* Content */}
+                      <div className="relative z-10">
+                        {/* Icon */}
+                        <div className={`w-14 h-14 bg-gradient-to-br ${item.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
+                          <Calendar className="w-7 h-7 text-white" />
+                        </div>
+
+                        {/* Title */}
+                        <h4 className="text-2xl font-bold text-white mb-4 group-hover:text-gradient transition-all duration-300">
+                          {item.title}
+                        </h4>
+
+                        {/* Description */}
+                        <p className="text-gray-400 text-sm leading-relaxed mb-6 group-hover:text-gray-300 transition-colors">
+                          {item.description}
+                        </p>
+
+                        {/* Milestone Badge */}
+                        <div className="flex items-center justify-between">
+                          <div className={`px-4 py-2 bg-gradient-to-r ${item.color} bg-opacity-20 rounded-xl border border-current`}>
+                            <span className="text-xs font-semibold text-white">
+                              {item.milestone}
+                            </span>
+                          </div>
+                          
+                          {/* Progress Indicator */}
+                          <div className="flex space-x-1">
+                            {[...Array(6)].map((_, i) => (
+                              <div
+                                key={i}
+                                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                                  i <= index 
+                                    ? `bg-gradient-to-r ${item.color}` 
+                                    : 'bg-gray-600'
+                                }`}
+                              />
+                            ))}
+                          </div>
+                        </div>
                       </div>
-                      
-                      <h4 className="text-xl font-bold text-white mb-2 group-hover:text-gradient transition-colors">
-                        {item.title}
-                      </h4>
-                      
-                      <p className="text-gray-400 text-sm mb-3">
-                        {item.description}
-                      </p>
-                      
-                      <div className="text-xs text-emerald-400 font-medium">
-                        {item.milestone}
-                      </div>
+
+                      {/* Decorative Elements */}
+                      <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-white/5 to-transparent rounded-full blur-xl" />
+                      <div className="absolute bottom-4 left-4 w-16 h-16 bg-gradient-to-tr from-white/3 to-transparent rounded-full blur-lg" />
                     </div>
+
+                    {/* Connection Line for Desktop */}
+                    {index < timeline.length - 1 && (
+                      <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-white/20 to-transparent transform -translate-y-1/2 z-10" />
+                    )}
                   </div>
-                  
-                  {/* Timeline Node */}
-                  <div className="relative z-10">
-                    <div className={`w-6 h-6 bg-gradient-to-r ${item.color} rounded-full border-4 border-navy-900 shadow-lg`} />
-                  </div>
-                  
-                  <div className="w-5/12" />
                 </motion.div>
               ))}
             </div>
+
+            {/* Progress Bar */}
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 2, delay: 1.5 }}
+              className="mt-12 h-1 bg-gradient-to-r from-blue-500 via-violet-500 via-emerald-500 to-yellow-500 rounded-full mx-auto max-w-4xl origin-left"
+            />
           </div>
         </motion.div>
 
