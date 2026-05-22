@@ -44,6 +44,19 @@ export default function ClientWrapper({ children }: ClientWrapperProps) {
     }
   }, [preloadComplete, minTimeComplete])
 
+  // Fallback: Show content after maximum wait time to prevent infinite loading
+  useEffect(() => {
+    const fallbackTimer = setTimeout(() => {
+      if (!showContent) {
+        console.log('Fallback: Showing content after maximum wait time')
+        setIsLoading(false)
+        setShowContent(true)
+      }
+    }, 5000) // Show content after 5 seconds maximum
+
+    return () => clearTimeout(fallbackTimer)
+  }, [showContent])
+
   return (
     <>
       <PreloadManager onPreloadComplete={handlePreloadComplete} />

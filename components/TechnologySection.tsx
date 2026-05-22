@@ -83,49 +83,14 @@ const TechnologySection = () => {
 
   return (
     <section className="py-24 relative overflow-hidden bg-navy-900">
-      {/* Background Elements */}
+      {/* Simplified Background Elements */}
       <div className="absolute inset-0">
         {/* Animated Grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.1)_1px,transparent_1px)] bg-[size:50px_50px] animate-pulse-glow" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.1)_1px,transparent_1px)] bg-[size:50px_50px] animate-pulse" />
         
         {/* Floating Orbs */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-float" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-        
-        {/* Neural Network Pattern */}
-        <svg className="absolute inset-0 w-full h-full opacity-10 pointer-events-none">
-          <defs>
-            <linearGradient id="neuralGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="rgba(99, 102, 241, 0.6)" />
-              <stop offset="100%" stopColor="rgba(139, 92, 246, 0.6)" />
-            </linearGradient>
-          </defs>
-          {Array.from({ length: 20 }).map((_, i) => (
-            <g key={i}>
-              <motion.circle
-                cx={`${Math.random() * 100}%`}
-                cy={`${Math.random() * 100}%`}
-                r="2"
-                fill="url(#neuralGradient)"
-                animate={{ opacity: [0.3, 1, 0.3] }}
-                transition={{ duration: 3, delay: i * 0.2, repeat: Infinity }}
-              />
-              {Array.from({ length: 3 }).map((_, j) => (
-                <motion.line
-                  key={j}
-                  x1={`${Math.random() * 100}%`}
-                  y1={`${Math.random() * 100}%`}
-                  x2={`${Math.random() * 100}%`}
-                  y2={`${Math.random() * 100}%`}
-                  stroke="url(#neuralGradient)"
-                  strokeWidth="1"
-                  animate={{ opacity: [0, 0.5, 0] }}
-                  transition={{ duration: 4, delay: (i + j) * 0.3, repeat: Infinity }}
-                />
-              ))}
-            </g>
-          ))}
-        </svg>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -150,7 +115,7 @@ const TechnologySection = () => {
           
           <h2 className="text-4xl lg:text-6xl font-bold font-jakarta mb-6">
             Innovation &{' '}
-            <span className="text-gradient bg-gradient-to-r from-indigo-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">
               Technology
             </span>
           </h2>
@@ -177,13 +142,13 @@ const TechnologySection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
               whileHover={{ y: -8, scale: 1.02 }}
-              className="glass-dark rounded-2xl p-6 hover:glow-blue transition-all duration-300 cursor-pointer group"
+              className="glass-dark rounded-2xl p-6 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 cursor-pointer group"
             >
               <div className={`w-12 h-12 bg-gradient-to-br ${tech.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                 <tech.icon className="w-6 h-6 text-white" />
               </div>
               
-              <h3 className="text-lg font-bold text-white mb-3 group-hover:text-gradient transition-colors">
+              <h3 className="text-lg font-bold text-white mb-3 group-hover:text-indigo-400 transition-colors">
                 {tech.category}
               </h3>
               
@@ -222,7 +187,7 @@ const TechnologySection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.7 + index * 0.1 }}
               whileHover={{ scale: 1.02 }}
-              className="glass-dark rounded-3xl p-8 hover:glow-purple transition-all duration-300 cursor-pointer group relative overflow-hidden"
+              className="glass-dark rounded-3xl p-8 hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 cursor-pointer group relative overflow-hidden"
             >
               {/* Background Pattern */}
               <div className="absolute inset-0 opacity-5">
@@ -234,7 +199,7 @@ const TechnologySection = () => {
                   <innovation.icon className="w-8 h-8 text-white" />
                 </div>
                 
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-gradient transition-colors">
+                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-violet-400 transition-colors">
                   {innovation.title}
                 </h3>
                 
@@ -280,7 +245,7 @@ const TechnologySection = () => {
                   transition={{ delay: 0.9 + index * 0.1 }}
                   className="text-center"
                 >
-                  <div className="w-12 h-12 glass rounded-xl flex items-center justify-center mx-auto mb-3 glow-cyan">
+                  <div className="w-12 h-12 glass rounded-xl flex items-center justify-center mx-auto mb-3 shadow-lg shadow-cyan-500/20">
                     <feature.icon className="w-6 h-6 text-cyan-400" />
                   </div>
                   <h4 className="text-sm font-semibold text-white mb-1">{feature.label}</h4>
