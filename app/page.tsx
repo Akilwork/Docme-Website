@@ -8,11 +8,12 @@ import BentoGridSection from '@/components/BentoGridSection'
 
 import SolutionsSection from '@/components/SolutionsSection'
 import ProductShowcase from '@/components/ProductShowcase'
+import OurStorySection from '@/components/OurStorySection'
 import TechnologySection from '@/components/TechnologySection'
 import PortfolioSection from '@/components/PortfolioSection'
 import GrowthSection from '@/components/GrowthSection'
 import TestimonialsSection from '@/components/TestimonialsSection'
-import ProcessSection from '@/components/ProcessSection'
+
 
 export default function Home() {
   return (
@@ -24,34 +25,19 @@ export default function Home() {
       <BusinessModelSection />
       <EcosystemSection />
       <BentoGridSection />
+      <OurStorySection />
 
       <SolutionsSection />
       <ProductShowcase />
-      <TechnologySection />
-      <PortfolioSection />
-      <GrowthSection />
+      {/* <TechnologySection /> */}
+      {/* <PortfolioSection /> */}
+      {/* <GrowthSection /> */}
       <TestimonialsSection />
-      <ProcessSection />
       
-      {/* Final CTA Section */}
-      
-      <section className="py-24 text-center bg-gradient-to-r from-indigo-900/50 to-violet-900/50">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-white mb-8">Ready to Build the Future With DOCME?</h2>
-          <p className="text-xl text-gray-300 mb-8">Transform your institution with intelligent digital infrastructure and scalable enterprise systems.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-2xl font-semibold text-lg hover:from-indigo-500 hover:to-violet-500 transition-all duration-300 cursor-pointer">
-              Book Consultation
-            </button>
-            <button className="px-8 py-4 glass-dark text-white rounded-2xl font-semibold text-lg hover:bg-white/20 transition-all duration-300 cursor-pointer">
-              Contact Team
-            </button>
-          </div>
-        </div>
-      </section>
+
       
       <footer className="py-16 bg-navy-900 border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-3 mb-4">
@@ -97,7 +83,7 @@ export default function Home() {
           </div>
           
           <div className="border-t border-white/10 mt-12 pt-8 text-center text-sm text-gray-400">
-            <p>&copy; 2024 DOCME. All rights reserved. Building the future of digital education.</p>
+            <p>&copy; 2026 DocMe. All rights reserved. Building the future of digital education.</p>
           </div>
         </div>
       </footer>

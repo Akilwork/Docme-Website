@@ -27,7 +27,7 @@ const TrustedBrands = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16 max-w-7xl mx-auto"
+          className="text-center mb-16 max-w-site mx-auto"
         >
           <h2 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
             INNOVATIVE COMPANIES THAT TRUST US

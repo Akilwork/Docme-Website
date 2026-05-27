@@ -7,6 +7,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      maxWidth: {
+        'site': '1280px',
+      },
+      padding: {
+        'site': '1.5rem', // 24px consistent horizontal padding
+      },
       colors: {
         primary: {
           50: '#f0f9ff',

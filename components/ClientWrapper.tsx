@@ -48,7 +48,6 @@ export default function ClientWrapper({ children }: ClientWrapperProps) {
   useEffect(() => {
     const fallbackTimer = setTimeout(() => {
       if (!showContent) {
-        console.log('Fallback: Showing content after maximum wait time')
         setIsLoading(false)
         setShowContent(true)
       }

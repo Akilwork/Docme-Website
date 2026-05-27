@@ -83,7 +83,7 @@ const TechnologySection = () => {
 
   return (
     <section className="py-24 relative overflow-hidden bg-navy-900">
-      {/* Simplified Background Elements */}
+      {/* Background Elements */}
       <div className="absolute inset-0">
         {/* Animated Grid */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.1)_1px,transparent_1px)] bg-[size:50px_50px] animate-pulse" />
@@ -95,23 +95,11 @@ const TechnologySection = () => {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center space-x-2 glass-dark px-6 py-3 rounded-full mb-6"
-          >
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center space-x-2 glass-dark px-6 py-3 rounded-full mb-6">
             <Cpu className="w-5 h-5 text-indigo-400" />
             <span className="text-gray-300">Cutting-Edge Technology</span>
-          </motion.div>
+          </div>
           
           <h2 className="text-4xl lg:text-6xl font-bold font-jakarta mb-6">
             Innovation &{' '}
@@ -124,24 +112,13 @@ const TechnologySection = () => {
             Built on modern architecture with cutting-edge technologies, delivering 
             unparalleled performance, security, and scalability.
           </p>
-        </motion.div>
+        </div>
 
         {/* Technology Stack Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"
-        >
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {technologies.map((tech, index) => (
-            <motion.div
+            <div
               key={tech.category}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-              whileHover={{ y: -8, scale: 1.02 }}
               className="glass-dark rounded-2xl p-6 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 cursor-pointer group"
             >
               <div className={`w-12 h-12 bg-gradient-to-br ${tech.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
@@ -154,39 +131,24 @@ const TechnologySection = () => {
               
               <div className="space-y-2">
                 {tech.items.map((item, itemIndex) => (
-                  <motion.div
+                  <div
                     key={item}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.5 + index * 0.1 + itemIndex * 0.05 }}
                     className="flex items-center text-sm text-gray-400"
                   >
                     <div className={`w-1 h-1 bg-gradient-to-r ${tech.color} rounded-full mr-2`} />
                     {item}
-                  </motion.div>
+                  </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Innovation Highlights */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="grid md:grid-cols-2 gap-8 mb-16"
-        >
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
           {innovations.map((innovation, index) => (
-            <motion.div
+            <div
               key={innovation.title}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.7 + index * 0.1 }}
-              whileHover={{ scale: 1.02 }}
               className="glass-dark rounded-3xl p-8 hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 cursor-pointer group relative overflow-hidden"
             >
               {/* Background Pattern */}
@@ -207,18 +169,12 @@ const TechnologySection = () => {
                   {innovation.description}
                 </p>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* API & Integration Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="glass-dark rounded-3xl p-8 text-center"
-        >
+        <div className="glass-dark rounded-3xl p-8 text-center">
           <div className="max-w-4xl mx-auto">
             <h3 className="text-3xl font-bold text-white mb-6">
               Enterprise-Grade API & Integration
@@ -237,12 +193,8 @@ const TechnologySection = () => {
                 { icon: Globe, label: 'Global CDN', desc: 'Worldwide Availability' },
                 { icon: Database, label: 'Real-time Data', desc: 'WebSocket Support' },
               ].map((feature, index) => (
-                <motion.div
+                <div
                   key={feature.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.9 + index * 0.1 }}
                   className="text-center"
                 >
                   <div className="w-12 h-12 glass rounded-xl flex items-center justify-center mx-auto mb-3 shadow-lg shadow-cyan-500/20">
@@ -250,11 +202,11 @@ const TechnologySection = () => {
                   </div>
                   <h4 className="text-sm font-semibold text-white mb-1">{feature.label}</h4>
                   <p className="text-xs text-gray-400">{feature.desc}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

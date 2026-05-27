@@ -28,26 +28,31 @@ export default function LoadingScreen({ onLoadingComplete }: LoadingScreenProps)
         {/* Background mesh gradient */}
         <div className="fixed inset-0 mesh-bg opacity-10 pointer-events-none" />
         
-        {/* Animated particles */}
+        {/* Animated particles — positions are deterministic (index-based) to avoid SSR hydration mismatch */}
         <div className="particles">
-          {Array.from({ length: 15 }).map((_, i) => (
-            <motion.div
-              key={i}
-              className="particle"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 1, 0] }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                delay: i * 0.2,
-                ease: "easeInOut"
-              }}
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-            />
-          ))}
+          {Array.from({ length: 15 }).map((_, i) => {
+            // Deterministic pseudo-random using golden-ratio spread — same on server & client
+            const left = ((i * 47.3 + 13.7) % 97).toFixed(4)
+            const top  = ((i * 61.8 + 29.1) % 93).toFixed(4)
+            return (
+              <motion.div
+                key={i}
+                className="particle"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 1, 0] }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  delay: i * 0.2,
+                  ease: "easeInOut"
+                }}
+                style={{
+                  left: `${left}%`,
+                  top: `${top}%`,
+                }}
+              />
+            )
+          })}
         </div>
 
         <div className="relative z-10 text-center">

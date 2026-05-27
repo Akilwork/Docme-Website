@@ -25,7 +25,7 @@ const HeroSection = () => {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-site mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-end min-h-screen pb-32">
             {/* Left Content */}
             <div className="text-left">
@@ -104,7 +104,7 @@ const HeroSection = () => {
 
       {/* Magic Text Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-black pt-2 pb-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center">
             <MagicText
               text="DocMe is a next-generation digital solutions company delivering innovative software, smart automation, and enterprise technology services for educational institutions and businesses. We build scalable, secure, and user-focused platforms that simplify operations, enhance productivity, and accelerate digital transformation across industries."

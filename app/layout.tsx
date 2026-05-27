@@ -44,22 +44,22 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jakarta.variable}`}>
+    <html lang="en" className={`${inter.variable} ${jakarta.variable}`} suppressHydrationWarning>
       <body className={`${inter.className} antialiased bg-navy-900 text-white overflow-x-hidden`}>
         <div className="relative min-h-screen">
           {/* Background mesh gradient */}
           <div className="fixed inset-0 mesh-bg opacity-10 pointer-events-none" />
           
-          {/* Floating particles */}
+          {/* Floating particles — deterministic positions to avoid SSR hydration mismatch */}
           <div className="particles">
             {Array.from({ length: 20 }).map((_, i) => (
               <div
                 key={i}
                 className="particle"
                 style={{
-                  left: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 8}s`,
-                  animationDuration: `${8 + Math.random() * 4}s`,
+                  left: `${((i * 47.3 + 13.7) % 97).toFixed(4)}%`,
+                  animationDelay: `${((i * 1.3) % 8).toFixed(2)}s`,
+                  animationDuration: `${(8 + (i * 0.7) % 4).toFixed(2)}s`,
                 }}
               />
             ))}

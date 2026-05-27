@@ -43,61 +43,11 @@ const BusinessModelSection = () => {
   ]
 
   return (
-    <section className="py-20 relative overflow-hidden">
-      {/* Background Image with Abstract Patterns */}
-      <div className="absolute inset-0">
-        {/* Base gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-violet-900 to-purple-900" />
-        
-        {/* Abstract geometric patterns */}
-        <div className="absolute inset-0 opacity-20">
-          {/* Large flowing curves */}
-          <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 1200 800" fill="none">
-            <path d="M0,400 Q300,200 600,400 T1200,400 L1200,800 L0,800 Z" fill="url(#gradient1)" />
-            <path d="M0,600 Q400,300 800,500 T1200,600 L1200,800 L0,800 Z" fill="url(#gradient2)" />
-            <defs>
-              <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="rgba(99, 102, 241, 0.3)" />
-                <stop offset="100%" stopColor="rgba(139, 92, 246, 0.1)" />
-              </linearGradient>
-              <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="rgba(139, 92, 246, 0.2)" />
-                <stop offset="100%" stopColor="rgba(168, 85, 247, 0.1)" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-        
-        {/* Abstract geometric shapes */}
-        <div className="absolute inset-0 opacity-10">
-          {/* Floating geometric elements */}
-          <div className="absolute top-20 left-10 w-32 h-32 border border-white/30 rounded-full animate-pulse" />
-          <div className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-br from-cyan-400/20 to-violet-400/20 rounded-2xl rotate-45" />
-          <div className="absolute bottom-32 left-1/4 w-16 h-16 border-2 border-white/20 rounded-full" />
-          <div className="absolute top-1/3 right-1/3 w-20 h-20 bg-gradient-to-br from-indigo-400/15 to-purple-400/15 rounded-full" />
-          <div className="absolute bottom-20 right-10 w-28 h-28 border border-white/20 rounded-2xl rotate-12" />
-          
-          {/* Grid pattern overlay */}
-          <div className="absolute inset-0" style={{
-            backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
-            `,
-            backgroundSize: '50px 50px'
-          }} />
-          
-          {/* Radial gradient overlays */}
-          <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-radial from-indigo-500/10 to-transparent rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-radial from-violet-500/10 to-transparent rounded-full blur-3xl" />
-        </div>
-        
-        {/* Noise texture overlay */}
-        <div className="absolute inset-0 opacity-[0.015] mix-blend-overlay" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
-        }} />
-      </div>
+    <section className="section-spacing relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #4a3e96 0%, #3a2f7a 50%, #2d2460 100%)' }} />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-site mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -115,7 +65,7 @@ const BusinessModelSection = () => {
           >
             They like how we structure{' '}
             <br className="hidden md:block" />
-            <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-indigo-400 bg-clip-text text-transparent">
+            <span className="text-white">
               their business models
             </span>
           </motion.h2>
@@ -134,13 +84,9 @@ const BusinessModelSection = () => {
             >
               <div className="flex items-start space-x-6">
                 {/* Icon */}
-                <motion.div
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.3 }}
-                  className="flex-shrink-0 w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center text-white group-hover:bg-white/20 transition-all duration-300"
-                >
+                <div className="flex-shrink-0 text-white">
                   {feature.icon}
-                </motion.div>
+                </div>
 
                 {/* Content */}
                 <div className="flex-1">

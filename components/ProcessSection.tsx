@@ -156,18 +156,23 @@ const ProcessSection = () => {
                 <div className={`w-full lg:w-5/12 ${index % 2 === 0 ? 'lg:pr-12' : 'lg:pl-12'}`}>
                   <motion.div
                     whileHover={{ y: -8, scale: 1.02 }}
-                    className="glass-dark rounded-3xl p-8 hover:glow-blue transition-all duration-300 cursor-pointer group"
+                    className="glass-dark rounded-3xl p-8 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 cursor-pointer group"
+                    role="article"
+                    aria-labelledby={`step-${step.number}-title`}
                   >
                     {/* Step Number */}
                     <div className={`inline-flex items-center space-x-3 px-4 py-2 bg-gradient-to-r ${step.color} rounded-full text-white font-bold mb-6`}>
-                      <span className="text-lg">{step.number}</span>
+                      <span className="text-lg" aria-label={`Step ${step.number}`}>{step.number}</span>
                       <div className={`w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center`}>
-                        <step.icon className="w-4 h-4" />
+                        <step.icon className="w-4 h-4" aria-hidden="true" />
                       </div>
                     </div>
                     
                     {/* Content */}
-                    <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-gradient transition-colors">
+                    <h3 
+                      id={`step-${step.number}-title`}
+                      className="text-2xl font-bold text-white mb-2 group-hover:bg-gradient-to-r group-hover:from-indigo-400 group-hover:via-violet-400 group-hover:to-cyan-400 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300"
+                    >
                       {step.title}
                     </h3>
                     
@@ -181,19 +186,21 @@ const ProcessSection = () => {
                     
                     {/* Duration */}
                     <div className="flex items-center space-x-2 mb-4">
-                      <Clock className="w-4 h-4 text-gray-500" />
+                      <Clock className="w-4 h-4 text-gray-500" aria-hidden="true" />
                       <span className="text-sm text-gray-500">Duration: {step.duration}</span>
                     </div>
                     
                     {/* Deliverables */}
                     <div className="space-y-2">
                       <h5 className="text-sm font-semibold text-white">Key Deliverables:</h5>
-                      {step.deliverables.map((deliverable, deliverableIndex) => (
-                        <div key={deliverableIndex} className="flex items-center text-sm text-gray-400">
-                          <div className={`w-1 h-1 bg-gradient-to-r ${step.color} rounded-full mr-2`} />
-                          {deliverable}
-                        </div>
-                      ))}
+                      <ul className="space-y-1" role="list">
+                        {step.deliverables.map((deliverable, deliverableIndex) => (
+                          <li key={deliverableIndex} className="flex items-center text-sm text-gray-400">
+                            <div className={`w-1 h-1 bg-gradient-to-r ${step.color} rounded-full mr-2 flex-shrink-0`} aria-hidden="true" />
+                            {deliverable}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </motion.div>
                 </div>
@@ -202,7 +209,8 @@ const ProcessSection = () => {
                 <div className="hidden lg:block relative z-10">
                   <motion.div
                     whileHover={{ scale: 1.2 }}
-                    className={`w-8 h-8 bg-gradient-to-r ${step.color} rounded-full border-4 border-navy-900 shadow-lg cursor-pointer`}
+                    className={`w-8 h-8 bg-gradient-to-r ${step.color} rounded-full border-4 border-slate-900 shadow-lg cursor-pointer`}
+                    aria-label={`Timeline marker for step ${step.number}`}
                   />
                 </div>
                 
@@ -238,13 +246,14 @@ const ProcessSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.7 + index * 0.1 }}
-                className="text-center"
+                whileHover={{ y: -4 }}
+                className="text-center group cursor-pointer"
               >
-                <div className="w-16 h-16 glass rounded-2xl flex items-center justify-center mx-auto mb-4 glow-indigo">
-                  <benefit.icon className="w-8 h-8 text-indigo-400" />
+                <div className="w-16 h-16 glass-dark rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-indigo-500/20 group-hover:shadow-indigo-500/40 transition-all duration-300">
+                  <benefit.icon className="w-8 h-8 text-indigo-400 group-hover:text-indigo-300 transition-colors" />
                 </div>
-                <h4 className="text-lg font-bold text-white mb-2">{benefit.title}</h4>
-                <p className="text-gray-400 text-sm">{benefit.description}</p>
+                <h4 className="text-lg font-bold text-white mb-2 group-hover:text-indigo-300 transition-colors">{benefit.title}</h4>
+                <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">{benefit.description}</p>
               </motion.div>
             ))}
           </div>
@@ -258,7 +267,7 @@ const ProcessSection = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="text-center"
         >
-          <div className="grid md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
             {[
               { value: '50+', label: 'Projects Delivered', color: 'text-blue-400' },
               { value: '98%', label: 'On-Time Delivery', color: 'text-emerald-400' },
@@ -271,12 +280,13 @@ const ProcessSection = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.9 + index * 0.1 }}
-                className="text-center"
+                whileHover={{ scale: 1.05 }}
+                className="text-center group cursor-pointer"
               >
-                <div className={`text-4xl font-bold mb-2 font-jakarta ${metric.color}`}>
+                <div className={`text-3xl md:text-4xl font-bold mb-2 font-jakarta ${metric.color} group-hover:scale-110 transition-transform`}>
                   {metric.value}
                 </div>
-                <div className="text-sm text-gray-400">
+                <div className="text-xs md:text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
                   {metric.label}
                 </div>
               </motion.div>
@@ -289,10 +299,11 @@ const ProcessSection = () => {
               boxShadow: '0 0 40px rgba(99, 102, 241, 0.6)'
             }}
             whileTap={{ scale: 0.95 }}
-            className="group px-8 py-4 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-2xl font-semibold text-lg flex items-center space-x-2 mx-auto hover:from-indigo-500 hover:to-violet-500 transition-all duration-300 cursor-pointer"
+            className="group px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-2xl font-semibold text-base md:text-lg flex items-center space-x-2 mx-auto hover:from-indigo-500 hover:to-violet-500 transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+            aria-label="Start your digital transformation project"
           >
             <span>Start Your Digital Transformation</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 md:w-5 h-4 md:h-5 group-hover:translate-x-1 transition-transform" />
           </motion.button>
         </motion.div>
       </div>

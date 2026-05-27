@@ -4,14 +4,14 @@ import { Building } from 'lucide-react'
 
 export default function Testimonials() {
   return (
-    <section className="py-24 relative overflow-hidden bg-navy-800/50">
+    <section className="section-spacing relative overflow-hidden bg-navy-800/50">
       {/* Background */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl space-y-8 px-4 sm:px-6 lg:px-8 md:space-y-16">
+      <div className="relative mx-auto max-w-site space-y-8 px-4 sm:px-6 lg:px-8 md:space-y-16">
         <div className="relative z-10 mx-auto max-w-3xl space-y-6 text-center md:space-y-12">
           <h2 className="text-4xl lg:text-6xl font-bold font-jakarta mb-6">
             Trusted by{' '}

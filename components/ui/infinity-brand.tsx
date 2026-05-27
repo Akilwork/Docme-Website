@@ -77,7 +77,7 @@ const InfinityBrand = ({
             <div
               key={`brand-${index}`}
               className={cn(
-                "flex-shrink-0 mx-8 flex items-center justify-center h-16 w-32 grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer",
+                "flex-shrink-0 mx-8 flex items-center justify-center h-16 w-32 brightness-0 invert hover:brightness-100 hover:invert-0 transition-all duration-300 cursor-pointer",
                 itemClassName
               )}
             >
@@ -101,7 +101,7 @@ const InfinityBrand = ({
             <div
               key={`brand-duplicate-${index}`}
               className={cn(
-                "flex-shrink-0 mx-8 flex items-center justify-center h-16 w-32 grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer",
+                "flex-shrink-0 mx-8 flex items-center justify-center h-16 w-32 brightness-0 invert hover:brightness-100 hover:invert-0 transition-all duration-300 cursor-pointer",
                 itemClassName
               )}
             >

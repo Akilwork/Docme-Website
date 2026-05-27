@@ -8,6 +8,42 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
+  /* ── Global layout tokens ── */
+  --container-max:  1280px;
+  --container-px:   1.5rem;   /* 24px desktop side padding */
+  --section-py:     6.25rem;  /* 100px vertical section spacing */
+  --card-gap:       1.5rem;   /* 24px card gap */
+}
+
+/* ── Universal container ── */
+.site-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-px);
+  padding-right: var(--container-px);
+}
+
+/* ── Uniform section vertical rhythm ── */
+.section-spacing {
+  padding-top: var(--section-py);
+  padding-bottom: var(--section-py);
+}
+
+/* ── Responsive overrides ── */
+@media (max-width: 1024px) {
+  :root {
+    --container-px: 2rem; /* 32px on tablet */
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --container-px: 1rem; /* 16px on mobile */
+    --section-py:   3.75rem; /* 60px on mobile */
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -132,6 +168,10 @@ a {
 }
 
 /* Glow effects */
+.glow-indigo {
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+}
+
 .glow-blue {
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
 }
@@ -146,6 +186,10 @@ a {
 
 .glow-cyan {
   box-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+}
+
+.glow-yellow {
+  box-shadow: 0 0 20px rgba(234, 179, 8, 0.5);
 }
 
 /* Hover animations */
@@ -237,6 +281,32 @@ a {
 
 .animate-infinite-scroll {
   animation: infinite-scroll 25s linear infinite;
+}
+
+/* Float animation for background elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Fade in animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Hide scrollbar utility */
