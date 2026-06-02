@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
+import ClientWrapper from '@/components/ClientWrapper'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -45,7 +46,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${jakarta.variable}`} suppressHydrationWarning>
-      <body className={`${inter.className} antialiased bg-navy-900 text-white overflow-x-hidden`}>
+      <body className={`${inter.className} antialiased bg-navy-900 text-white overflow-x-clip`}>
         <div className="relative min-h-screen">
           {/* Background mesh gradient */}
           <div className="fixed inset-0 mesh-bg opacity-10 pointer-events-none" />
@@ -64,8 +65,9 @@ export default function RootLayout({
               />
             ))}
           </div>
-          
-          {children}
+          <ClientWrapper>
+            {children}
+          </ClientWrapper>
         </div>
       </body>
     </html>

@@ -4,11 +4,11 @@ import { useRef } from "react";
 const Example = () => {
   return (
     <div className="bg-neutral-800">
-      <div className="flex h-48 items-center justify-center">
+      <div className="flex h-12 items-center justify-center">
         <span className="font-semibold uppercase text-neutral-500">Scroll down</span>
       </div>
       <HorizontalScrollCarousel />
-      <div className="flex h-48 items-center justify-center">
+      <div className="flex h-12 items-center justify-center">
         <span className="font-semibold uppercase text-neutral-500">Scroll up</span>
       </div>
     </div>
@@ -24,7 +24,7 @@ const HorizontalScrollCarousel = () => {
   const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
 
   return (
-    <section ref={targetRef} className="relative h-[300vh] bg-neutral-900">
+    <section ref={targetRef} className="relative h-[200vh] bg-neutral-900">
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <motion.div style={{ x }} className="flex gap-4">
           {cards.map((card) => {

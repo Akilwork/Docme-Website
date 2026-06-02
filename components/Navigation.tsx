@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import Link from 'next/link'
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -34,11 +35,11 @@ const Navigation = () => {
   }, [lastScrollY])
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: 'Services', href: '/services' },
+    { name: 'Portfolio', href: '/#portfolio' },
+    { name: 'Contact', href: '/#contact' },
   ]
 
   return (
@@ -74,14 +75,14 @@ const Navigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                whileHover={{ y: -2 }}
-                className="text-slate-300 hover:text-white transition-colors duration-200 cursor-pointer font-medium"
-              >
-                {item.name}
-              </motion.a>
+              <Link key={item.name} href={item.href} passHref legacyBehavior>
+                <motion.a
+                  whileHover={{ y: -2 }}
+                  className="text-slate-300 hover:text-white transition-colors duration-200 cursor-pointer font-medium"
+                >
+                  {item.name}
+                </motion.a>
+              </Link>
             ))}
           </div>
 
@@ -120,14 +121,14 @@ const Navigation = () => {
           >
             <div className="px-4 py-4 space-y-3">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.name}
                   href={item.href}
                   className="block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-all duration-200 cursor-pointer"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
-                </a>
+                </Link>
               ))}
               <div className="pt-3 border-t border-slate-800">
                 <button className="w-full px-3 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg font-medium transition-colors duration-200 cursor-pointer">
