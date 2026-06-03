@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
-import ClientWrapper from '@/components/ClientWrapper'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -65,11 +64,9 @@ export default function RootLayout({
               />
             ))}
           </div>
-          <ClientWrapper>
-            {children}
-          </ClientWrapper>
+          {children}
         </div>
       </body>
     </html>
   )
-}
+}

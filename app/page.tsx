@@ -12,29 +12,33 @@ import TechnologySection from '@/components/TechnologySection'
 import PortfolioSection from '@/components/PortfolioSection'
 import GrowthSection from '@/components/GrowthSection'
 import TestimonialsSection from '@/components/TestimonialsSection'
+import InsightSection from '@/components/InsightSection'
 import Footer from '@/components/Footer'
+import ClientWrapper from '@/components/ClientWrapper'
 
 
 export default function Home() {
   return (
-    <main className="relative">
-      <Navigation />
-      <HeroSection />
-      <TrustedBrands />
-      <BusinessModelSection />
-      <EcosystemSection />
-      <BentoGridSection />
-      <OurStorySection />
-      <ServicesSection />
+    <ClientWrapper>
+      <main className="relative">
+        <Navigation />
+        <HeroSection />
+        <TrustedBrands />
+        <BusinessModelSection />
+        <EcosystemSection />
+        <BentoGridSection />
+        <OurStorySection />
+        <ServicesSection />
 
-      <ProductShowcase />
-      {/* <TechnologySection /> */}
-      {/* <PortfolioSection /> */}
-      {/* <GrowthSection /> */}
-      <TestimonialsSection />
-      
+        <ProductShowcase />
+        {/* <TechnologySection /> */}
+        {/* <PortfolioSection /> */}
+        {/* <GrowthSection /> */}
+        <TestimonialsSection />
+        <InsightSection />
 
-      <Footer />
+        <Footer />
       </main>
+    </ClientWrapper>
   )
 }

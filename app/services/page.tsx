@@ -1,6 +1,5 @@
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
-import Link from 'next/link'
 import ServiceDetailsContent from '@/components/ServiceDetailsContent'
 import ImpactSection from '@/components/ImpactSection'
 
@@ -8,26 +7,23 @@ export default function ServicesPage() {
   return (
     <main className="relative min-h-screen bg-[#F5F5F7]">
       <Navigation />
-      
-      {/* Service Details Header/Hero */}
-      <section className="relative w-full h-[60vh] min-h-[400px] flex items-center justify-center bg-slate-900 overflow-hidden pt-20">
-        {/* Background Image / Overlay */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-slate-900/80 z-10" />
-          <img 
-            src="/assets/Feature/dash1.jpg" 
-            alt="Service Background" 
-            className="w-full h-full object-cover opacity-30"
-          />
-        </div>
 
-        <div className="relative z-20 text-center max-w-4xl mx-auto px-4 flex flex-col items-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Service
-          </h1>
-          
+      {/* Service Details Header — ContactHeader style */}
+      <section className="w-full bg-white pt-32 pb-16 md:pb-20 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            {/* Left: Title */}
+            <h1 className="text-5xl md:text-6xl lg:text-[5rem] font-serif font-bold text-black leading-tight tracking-tight whitespace-nowrap">
+              Services
+            </h1>
 
-
+            {/* Right: Subtitle */}
+            <div className="md:pl-10 lg:pl-20">
+              <p className="text-base md:text-lg text-gray-500 font-normal leading-relaxed max-w-sm">
+                Every project we deliver is a reflection of our commitment to quality, designed to inspire and drive success.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

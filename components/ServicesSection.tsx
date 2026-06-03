@@ -176,20 +176,30 @@ const ServicesSection = () => {
         <div className="site-container relative z-10 flex flex-col">
 
           {/* Section Header */}
-          <motion.div
-            className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-16 gap-3 flex-shrink-0"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
-              Services
-            </h2>
-            <p className="text-gray-500 text-sm sm:text-base max-w-lg text-left leading-snug">
-              Comprehensive digital solutions designed to transform every aspect of institutional management and operational excellence.
-            </p>
-          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-16 flex-shrink-0">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
+            >
+              <h2 className="text-5xl md:text-6xl lg:text-[5rem] font-serif font-bold text-black leading-tight tracking-tight whitespace-nowrap">
+                Services
+              </h2>
+            </motion.div>
+
+            <motion.div
+              className="md:pl-10 lg:pl-20"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: 'easeOut', delay: 0.15 }}
+            >
+              <p className="text-base md:text-lg text-gray-500 font-normal leading-relaxed max-w-sm">
+                Every project we deliver is a reflection of our commitment to quality, designed to inspire and drive success.
+              </p>
+            </motion.div>
+          </div>
 
           {/* Card strip window */}
           <div ref={windowRef} className="relative w-full flex-1 min-h-0">
@@ -296,7 +306,7 @@ const ServicesSection = () => {
                     <div>
                       <p
                         style={{
-                          fontSize: '13px',
+                          fontSize: '18px',
                           color: isHovered ? '#ffffff' : '#d1d5db',
                           lineHeight: '1.6',
                           marginBottom: '14px',
@@ -314,7 +324,7 @@ const ServicesSection = () => {
                               display: 'flex',
                               alignItems: 'center',
                               gap: '8px',
-                              fontSize: '13px',
+                              fontSize: '15px',
                               color: isHovered ? '#f3f4f6' : '#d1d5db',
                               marginBottom: '6px',
                               transition: 'color 0.3s',
