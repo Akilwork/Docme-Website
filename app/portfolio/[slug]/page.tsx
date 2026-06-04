@@ -370,12 +370,13 @@ function RelatedProjects({ currentSlug }: { currentSlug: string }) {
 }
 
 // ── Page ──────────────────────────────────────────────────────────────────────
-export default function PortfolioDetailPage({
+export default async function PortfolioDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const project = projects.find((p) => p.slug === params.slug);
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
   if (!project) notFound();
 
   return (
