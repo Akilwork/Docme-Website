@@ -10,7 +10,8 @@ export default function ImpactSection() {
         </h2>
         
         <p className="text-slate-500 text-base md:text-lg max-w-3xl mx-auto leading-relaxed mb-12 sm:mb-16 md:mb-24 font-light">
-          Every innovation that happens here is out of a quest to get better at what we are already doing. We deliver ideas that make a difference, create experiences that transform lives and build ecosystems that foster progress.
+          Docme empowers organizations with innovative digital solutions that simplify operations, enhance efficiency, and drive sustainable growth. We help businesses and institutions achieve smarter outcomes through technology-driven innovation.
+
         </p>
         
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-8 mb-12 sm:mb-16 md:mb-20">
