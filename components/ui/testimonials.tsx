@@ -11,7 +11,7 @@ export default function Testimonials() {
         <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative mx-auto max-w-site space-y-8 px-4 sm:px-6 lg:px-8 md:space-y-16">
+      <div className="relative site-container space-y-8 md:space-y-16">
         <div className="relative z-10 mx-auto max-w-3xl space-y-6 text-center md:space-y-12">
           <h2 className="text-4xl lg:text-6xl font-bold font-jakarta mb-6">
             Trusted by{' '}

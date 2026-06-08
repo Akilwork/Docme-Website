@@ -4,8 +4,8 @@ import { motion } from 'framer-motion'
 
 const ContactHeader = () => {
   return (
-    <section className="w-full bg-white py-12 md:py-16 lg:py-20 border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="w-full bg-white py-10 sm:py-12 md:py-16 lg:py-20 border-b border-gray-100">
+      <div className="site-container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Left Column: Heading */}
           <motion.div
@@ -13,7 +13,10 @@ const ContactHeader = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
           >
-            <h1 className="text-5xl md:text-6xl lg:text-[5rem] font-serif font-bold text-black leading-tight tracking-tight whitespace-nowrap">
+            <h1
+              className="font-serif font-bold text-black leading-tight tracking-tight"
+              style={{ fontSize: 'clamp(2.5rem, 10vw, 5rem)' }}
+            >
               Contact Us
             </h1>
           </motion.div>

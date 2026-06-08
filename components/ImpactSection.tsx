@@ -2,44 +2,44 @@ import { ArrowRight } from "lucide-react"
 
 export default function ImpactSection() {
   return (
-    <section className="py-32 flex flex-col items-center justify-center">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section className="section-spacing bg-white flex flex-col items-center justify-center">
+      <div className="site-container text-center">
         
-        <h2 className="text-5xl md:text-6xl font-medium text-slate-900 mb-8 tracking-tight">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-medium text-slate-900 mb-6 sm:mb-8 tracking-tight">
           Our Impact
         </h2>
         
-        <p className="text-slate-500 text-base md:text-lg max-w-3xl mx-auto leading-relaxed mb-24 font-light">
+        <p className="text-slate-500 text-base md:text-lg max-w-3xl mx-auto leading-relaxed mb-12 sm:mb-16 md:mb-24 font-light">
           Every innovation that happens here is out of a quest to get better at what we are already doing. We deliver ideas that make a difference, create experiences that transform lives and build ecosystems that foster progress.
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-8 mb-12 sm:mb-16 md:mb-20">
           {/* Stat 1 */}
           <div className="space-y-4">
-            <h3 className="text-7xl md:text-[80px] font-light text-slate-800 tracking-tight leading-none">
+            <h3 className="text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-light text-slate-800 tracking-tight leading-none">
               700+
             </h3>
-            <p className="text-slate-500 text-sm md:text-sm max-w-[220px] mx-auto leading-relaxed">
+            <p className="text-slate-500 text-sm max-w-[220px] mx-auto leading-relaxed">
               Projects launched successfully across the globe
             </p>
           </div>
           
           {/* Stat 2 */}
           <div className="space-y-4">
-            <h3 className="text-7xl md:text-[80px] font-light text-slate-800 tracking-tight leading-none">
+            <h3 className="text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-light text-slate-800 tracking-tight leading-none">
               10M
             </h3>
-            <p className="text-slate-500 text-sm md:text-sm max-w-[220px] mx-auto leading-relaxed">
+            <p className="text-slate-500 text-sm max-w-[220px] mx-auto leading-relaxed">
               Daily customer engagement through our projects
             </p>
           </div>
           
           {/* Stat 3 */}
           <div className="space-y-4">
-            <h3 className="text-7xl md:text-[80px] font-light text-slate-800 tracking-tight leading-none">
+            <h3 className="text-5xl sm:text-6xl md:text-7xl lg:text-[80px] font-light text-slate-800 tracking-tight leading-none">
               100+
             </h3>
-            <p className="text-slate-500 text-sm md:text-sm max-w-[220px] mx-auto leading-relaxed">
+            <p className="text-slate-500 text-sm max-w-[220px] mx-auto leading-relaxed">
               Digital transformation stories that made a difference
             </p>
           </div>

@@ -9,14 +9,14 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 
-  /* ── Global layout tokens ── */
+  /* ── Global layout tokens (mobile-first) ── */
   --container-max:  1280px;
-  --container-px:   1.5rem;   /* 24px desktop side padding */
-  --section-py:     6.25rem;  /* 100px vertical section spacing */
+  --container-px:   1.25rem;  /* 20px — mobile base */
+  --section-py:     3.75rem;  /* 60px — mobile vertical spacing */
   --card-gap:       1.5rem;   /* 24px card gap */
 }
 
-/* ── Universal container ── */
+/* ── Universal container — mobile-first, used by ALL sections ── */
 .site-container {
   width: 100%;
   max-width: var(--container-max);
@@ -32,17 +32,24 @@
   padding-bottom: var(--section-py);
 }
 
-/* ── Responsive overrides ── */
-@media (max-width: 1024px) {
+/* ── Responsive scale-up ── */
+@media (min-width: 640px) {
   :root {
-    --container-px: 2rem; /* 32px on tablet */
+    --container-px: 2rem;    /* 32px on tablet */
+    --section-py:   5rem;    /* 80px on tablet */
   }
 }
 
-@media (max-width: 640px) {
+@media (min-width: 1024px) {
   :root {
-    --container-px: 1rem; /* 16px on mobile */
-    --section-py:   3.75rem; /* 60px on mobile */
+    --container-px: 3rem;    /* 48px on desktop */
+    --section-py:   6.25rem; /* 100px on desktop */
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --container-px: 5rem;    /* 80px on large desktop */
   }
 }
 

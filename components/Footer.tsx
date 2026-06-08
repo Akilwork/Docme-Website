@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="relative bg-[#080808] pt-64 md:pt-96 lg:pt-[500px] xl:pt-[320px] pb-12 md:pb-24 overflow-hidden border-t border-white/5">
+    <footer className="relative bg-[#080808] pt-24 sm:pt-40 md:pt-64 lg:pt-80 xl:pt-[320px] pb-10 sm:pb-16 md:pb-24 overflow-hidden border-t border-white/5">
       {/* Large Faint Background Text */}
       <div className="absolute top-0 left-0 w-full flex justify-center pointer-events-none select-none h-full">
         <span className="text-[22vw] font-black uppercase tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white/25 via-transparent to-transparent leading-none -mt-4">
@@ -8,8 +8,8 @@ export default function Footer() {
         </span>
       </div>
 
-      <div className="relative z-10 max-w-site mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 lg:gap-8">
+      <div className="relative z-10 site-container">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-8">
           <div className="md:col-span-12 lg:col-span-5">
             <div className="flex items-center mb-6">
               <img

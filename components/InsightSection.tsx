@@ -26,14 +26,14 @@ const INSIGHTS = [
 
 export default function InsightSection() {
   return (
-    <section className="py-32 bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 sm:py-24 md:py-32 bg-black">
+      <div className="site-container">
         
-        <h2 className="text-4xl md:text-5xl font-semibold text-white mb-20 text-center tracking-tight">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-12 sm:mb-16 md:mb-20 text-center tracking-tight">
           Insight
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
           {INSIGHTS.map((insight, index) => (
             <div key={index} className="group cursor-pointer flex flex-col">
               {/* Image Container */}

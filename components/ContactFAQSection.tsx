@@ -47,8 +47,8 @@ export default function ContactFAQSection() {
   const [hoveredId, setHoveredId] = useState<number | null>(faqs[0].id)
 
   return (
-    <section className="w-full bg-black py-20 md:py-28">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="w-full bg-black py-14 sm:py-20 md:py-28">
+      <div className="site-container max-w-4xl">
 
         {/* ── Header ── */}
         <motion.div
@@ -59,7 +59,7 @@ export default function ContactFAQSection() {
           className="text-center mb-14"
         >
 
-          <h2 className="text-4xl md:text-6xl font-bold text-white leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
             Frequently<br />Asked Questions
           </h2>
         </motion.div>

@@ -11,72 +11,76 @@ const stats = [
 
 /* ─── animation helpers ──────────────────────────────────────────────────── */
 const fade = (delay = 0) => ({
-  initial: { opacity: 0, y: 22 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.72, ease: [0.22, 1, 0.36, 1], delay },
+  initial:    { opacity: 0, y: 30 },
+  animate:    { opacity: 1, y: 0 },
+  transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1], delay },
 })
 
 export default function AboutStatsSection() {
-  const ref   = useRef<HTMLElement>(null)
+  const ref    = useRef<HTMLElement>(null)
   const inView = useInView(ref, { once: true, margin: '-8% 0px' })
 
   return (
     <section ref={ref} style={styles.section}>
 
-      {/* ════ LEFT ════ */}
-      <div style={styles.left}>
-        {/* eyebrow */}
-        <motion.span
-          style={styles.eyebrow}
-          {...fade(0.05)}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 22 }}
+      {/* ════ VIDEO BACKGROUND — blurred, centered at top ════ */}
+      <div style={styles.videoBg}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={styles.video}
         >
-          About Us
-        </motion.span>
-
-        {/* heading */}
-        <motion.h2
-          style={styles.heading}
-          {...fade(0.15)}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 22 }}
-        >
-          Astronomy<br />
-          Communities For<br />
-          Everyone
-        </motion.h2>
-
-        {/* body */}
-        <motion.p
-          style={styles.body}
-          {...fade(0.28)}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 22 }}
-        >
-          Nulla eleifend ex vel elit blandit facilisis. In lobortis ipsum sed velit
-          malesuada, non rutrum dui varius. Proin justo leo, vulputate non orci in,
-          finibus varius lectus.
-        </motion.p>
+          <source src="/rosiau__pindown.io_1780476537.mp4" type="video/mp4" />
+        </video>
+        {/* dark overlay to keep text readable */}
+        <div style={styles.overlay} />
       </div>
 
-      {/* ════ RIGHT — 2×2 stat grid ════ */}
-      <div style={styles.grid}>
-        {stats.map((stat, i) => (
-          <motion.div
-            key={stat.label}
-            style={{
-              ...styles.cell,
-              /* hairline borders — only where needed */
-              /* right border only when there's an item to the right */
-              borderRight:  (i % 2 === 0 && i + 1 < stats.length) ? '1px solid rgba(255,255,255,0.08)' : 'none',
-              /* bottom border only for items in the first row */
-              borderBottom: i < 2 ? '1px solid rgba(255,255,255,0.08)' : 'none',
-            }}
-            {...fade(0.18 + i * 0.1)}
-            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 22 }}
+      {/* ════ CONTENT LAYER — sits in front of video ════ */}
+      <div className="site-container" style={{ position: 'relative', zIndex: 1 }}>
+        <div style={styles.contentRow}>
+
+        {/* ── LEFT — editorial headline block ── */}
+        <div style={styles.left}>
+          <motion.h2
+            style={styles.heading}
+            {...fade(0.05)}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           >
-            <span style={styles.statValue}>{stat.value}</span>
-            <span style={styles.statLabel}>{stat.label}</span>
-          </motion.div>
-        ))}
+            Astronomy Communities
+            <br />
+            For Everyone
+          </motion.h2>
+
+          <motion.p
+            style={styles.body}
+            {...fade(0.22)}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          >
+            Nulla eleifend ex vel elit blandit facilisis. In lobortis ipsum sed
+            velit malesuada, non rutrum dui varius. Proin justo leo, vulputate
+            non orci in, finibus varius lectus.
+          </motion.p>
+        </div>
+
+        {/* ── RIGHT — vertically stacked oversized stats ── */}
+        <div style={styles.right}>
+          {stats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              style={styles.statRow}
+              {...fade(0.12 + i * 0.14)}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            >
+              <span style={styles.statValue}>{stat.value}</span>
+              <span style={styles.statLabel}>{stat.label}</span>
+            </motion.div>
+          ))}
+        </div>
+
+        </div>
       </div>
     </section>
   )
@@ -85,75 +89,113 @@ export default function AboutStatsSection() {
 /* ─── styles ─────────────────────────────────────────────────────────────── */
 const styles: Record<string, React.CSSProperties> = {
   section: {
-    display:         'flex',
-    alignItems:      'center',
-    gap:             '6rem',
-    padding:         '7rem 7%',
-    background:      '#080808',
-    color:           '#fff',
-    fontFamily:      'inherit',
+    position:       'relative',
+    display:        'flex',
+    alignItems:     'center',
+    paddingTop:     '4rem',
+    paddingBottom:  '4rem',
+    background:     '#080808',
+    color:          '#fff',
+    fontFamily:     'inherit',
+    minHeight:      '60vh',
+    overflow:       'hidden',
+  },
+
+  /* ── video bg ── */
+  videoBg: {
+    position:       'absolute',
+    top:            0,
+    left:           '50%',
+    transform:      'translateX(-50%)',
+    width:          '60%',
+    height:         '100%',
+    pointerEvents:  'none',
+  },
+
+  video: {
+    width:          '100%',
+    height:         '100%',
+    objectFit:      'cover',
+    objectPosition: 'center top',
+    filter:         'blur(28px) brightness(0.45)',
+    transform:      'scale(1.08)', /* hide blur edges */
+  },
+
+  overlay: {
+    position:       'absolute',
+    inset:          0,
+    background:     'linear-gradient(to right, #080808 12%, transparent 40%, transparent 60%, #080808 88%)',
+  },
+
+  /* ── content row sits above the video ── */
+  contentRow: {
+    position:       'relative',
+    zIndex:         1,
+    display:        'flex',
+    flexWrap:       'wrap' as const,
+    alignItems:     'flex-start',
+    gap:            '3rem',
+    width:          '100%',
   },
 
   /* ── left col ── */
   left: {
-    flex:            '0 0 42%',
-    display:         'flex',
-    flexDirection:   'column',
-    gap:             '1.6rem',
-    maxWidth:        '480px',
-  },
-
-  eyebrow: {
-    fontSize:        '0.82rem',
-    fontWeight:      400,
-    letterSpacing:   '0.04em',
-    color:           '#888',
+    flex:           '1 1 280px',
+    minWidth:       0,
+    display:        'flex',
+    flexDirection:  'column',
+    gap:            '2rem',
   },
 
   heading: {
-    fontSize:        'clamp(2.4rem, 3.8vw, 3.6rem)',
-    fontWeight:      700,
-    lineHeight:      1.08,
-    letterSpacing:   '-0.025em',
-    color:           '#ffffff',
-    margin:          0,
+    fontSize:       'clamp(1.5rem, 4vw, 3.6rem)',
+    fontWeight:     700,
+    lineHeight:     1.15,
+    letterSpacing:  '-0.03em',
+    color:          '#ffffff',
+    margin:         0,
   },
 
   body: {
-    fontSize:        '0.9rem',
-    lineHeight:      1.8,
-    color:           '#666',
-    maxWidth:        '40ch',
-    margin:          0,
+    fontSize:       '0.92rem',
+    lineHeight:     1.85,
+    color:          'rgba(255,255,255,0.42)',
+    maxWidth:       '42ch',
+    margin:         0,
+    fontWeight:     400,
   },
 
-  /* ── right 2×2 grid ── */
-  grid: {
-    flex:            1,
-    display:         'grid',
-    gridTemplateColumns: '1fr 1fr',
-    /* no explicit gap — borders + padding create the visual separation */
+  /* ── right col — stacked stat rows ── */
+  right: {
+    flex:           '1 1 240px',
+    minWidth:       0,
+    display:        'flex',
+    flexDirection:  'column',
+    alignItems:     'flex-end',
   },
 
-  cell: {
-    display:         'flex',
-    flexDirection:   'column',
-    gap:             '0.5rem',
-    padding:         '2.5rem 2.8rem 2.5rem 2.8rem',
+  statRow: {
+    display:        'flex',
+    flexDirection:  'column',
+    alignItems:     'flex-end',
+    gap:            '0.5rem',
+    padding:        '2.6rem 0',
+    width:          '100%',
+    textAlign:      'right',
   },
 
   statValue: {
-    fontSize:        'clamp(3rem, 5.5vw, 5rem)',
-    fontWeight:      700,
-    letterSpacing:   '-0.04em',
-    lineHeight:      1,
-    color:           '#ffffff',
+    fontSize:       'clamp(2rem, 6vw, 6.5rem)',
+    fontWeight:     300,
+    letterSpacing:  '-0.04em',
+    lineHeight:     1,
+    color:          '#ffffff',
   },
 
   statLabel: {
-    fontSize:        '0.84rem',
-    fontWeight:      400,
-    color:           '#666',
-    letterSpacing:   '0.01em',
+    fontSize:       '0.95rem',
+    fontWeight:     400,
+    color:          'rgba(255,255,255,0.45)',
+    letterSpacing:  '0.02em',
   },
 }

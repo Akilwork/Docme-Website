@@ -25,8 +25,8 @@ const HeroSection = () => {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 max-w-site mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-end min-h-screen pb-32">
+        <div className="relative z-10 site-container">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-end min-h-screen pb-20 sm:pb-28 lg:pb-32">
             {/* Left Content */}
             <div className="text-left">
               {/* Main Heading */}
@@ -34,7 +34,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="text-4xl lg:text-5xl xl:text-5xl font-semibold text-white leading-tight mb-6"
+                className="text-3xl sm:text-4xl lg:text-5xl xl:text-5xl font-semibold text-white leading-tight mb-4 sm:mb-6"
               >
                 Next-Generation Digital Solutions for <span style={{ color: '#6366F1' }}>Education & Business</span>
               </motion.h1>
@@ -44,7 +44,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="text-xl text-gray-200 mb-8 max-w-2xl"
+                className="text-base sm:text-xl text-gray-200 mb-6 sm:mb-8 max-w-2xl"
               >
                 DocMe delivers innovative software, smart automation, and enterprise technology services that simplify operations, enhance productivity, and accelerate digital transformation.
               </motion.p>
@@ -103,8 +103,8 @@ const HeroSection = () => {
       </section>
 
       {/* Magic Text Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-black pt-2 pb-8">
-        <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative flex items-center justify-center bg-black py-16 sm:py-20 lg:py-24">
+        <div className="site-container">
           <div className="flex items-center justify-center">
             <MagicText
               text="DocMe is a next-generation digital solutions company delivering innovative software, smart automation, and enterprise technology services for educational institutions and businesses. We build scalable, secure, and user-focused platforms that simplify operations, enhance productivity, and accelerate digital transformation across industries."

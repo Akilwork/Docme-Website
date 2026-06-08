@@ -5,12 +5,12 @@ import { ArrowUpRight } from "lucide-react"
 export default function AboutSection() {
   return (
     <section id="about" className="py-24 bg-white text-slate-900 relative overflow-hidden">
-      <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           
           {/* Left Content */}
           <div className="space-y-8 max-w-xl">
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] text-slate-900 tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] text-slate-900 tracking-tight">
               Pioneering the Future<br />of Digital Ecosystems
             </h2>
             
@@ -21,7 +21,7 @@ export default function AboutSection() {
 
           {/* Right Content - Image and Badge */}
           <div className="relative mt-12 lg:mt-0">
-            <div className="relative h-[450px] sm:h-[550px] lg:h-[650px] w-full rounded-[2.5rem] overflow-hidden shadow-2xl">
+            <div className="relative h-[360px] sm:h-[450px] lg:h-[550px] xl:h-[650px] w-full rounded-[2.5rem] overflow-hidden shadow-2xl">
               <img
                 src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80"
                 alt="Team collaborating"
@@ -30,7 +30,7 @@ export default function AboutSection() {
             </div>
             
             {/* Circular Badge */}
-            <div className="absolute -left-6 -bottom-6 sm:-left-16 sm:-bottom-12 w-36 h-36 sm:w-56 sm:h-56 bg-white rounded-full flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-slate-50">
+            <div className="absolute -left-4 sm:-left-6 -bottom-4 sm:-bottom-6 md:-left-16 md:-bottom-12 w-28 sm:w-36 md:w-44 lg:w-56 h-28 sm:h-36 md:h-44 lg:h-56 bg-white rounded-full flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-slate-50">
               <div className="relative w-full h-full flex items-center justify-center">
                 {/* Rotating Text SVG */}
                 <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full animate-[spin_15s_linear_infinite]">

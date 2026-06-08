@@ -22,66 +22,37 @@ interface PortfolioDetailContentProps {
   platforms?: string[];
 }
 
-// ── MockupFrame ─────────────────────────────────────────────────────────────
-function MockupFrame({
-  src,
-  alt,
-  size = 'lg',
-}: {
-  src: string;
-  alt: string;
-  size?: 'sm' | 'lg';
-}) {
-  return (
-    <div
-      className={`relative rounded-2xl overflow-hidden bg-gray-50 shadow-[0_4px_32px_rgba(0,0,0,0.10)] border border-gray-100 ${
-        size === 'sm' ? 'aspect-[4/3]' : 'aspect-[16/10]'
-      }`}
-    >
-      {/* Top bar decoration */}
-      <div className="absolute top-0 left-0 right-0 h-7 bg-gray-100 flex items-center px-3 gap-1.5 z-10">
-        <span className="w-2.5 h-2.5 rounded-full bg-red-300" />
-        <span className="w-2.5 h-2.5 rounded-full bg-yellow-300" />
-        <span className="w-2.5 h-2.5 rounded-full bg-green-300" />
-        <div className="flex-1 mx-3 h-4 rounded-full bg-white/80 border border-gray-200" />
-      </div>
-      <div className="pt-7 w-full h-full">
-        <img src={src} alt={alt} className="w-full h-full object-cover" />
-      </div>
-    </div>
-  );
-}
-
 // ── Feature Row ──────────────────────────────────────────────────────────────
 function FeatureRow({ feature }: { feature: Feature }) {
   return (
     <div
-      className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center ${
-        feature.reverse ? 'lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1' : ''
+      className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-center ${
+        feature.reverse ? 'md:[direction:rtl]' : ''
       }`}
     >
-      {/* Text */}
-      <div className="flex flex-col gap-5">
-        <h2
-          className="font-bold text-black leading-tight"
-          style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)' }}
-        >
-          {feature.title}
-        </h2>
-        <p className="text-gray-500 text-base leading-relaxed max-w-md">
-          {feature.description}
-        </p>
+      {/* Text — always reset to ltr inside */}
+      <div style={{ direction: 'ltr', display: 'flex', flexDirection: 'column', gap: '1.4rem' }}>
+        <h2 style={styles.featureTitle}>{feature.title}</h2>
+        <p style={styles.featureBody}>{feature.description}</p>
       </div>
 
-      {/* Mockup */}
-      <MockupFrame src={feature.image} alt={feature.imageAlt} size="lg" />
+      {/* Image */}
+      <div style={{ direction: 'ltr', ...styles.featureImgWrap }}>
+        {/* browser bar decoration */}
+        <div style={styles.browserBar}>
+          <span style={styles.dot} />
+          <span style={styles.dot} />
+          <span style={styles.dot} />
+          <div style={styles.urlBar} />
+        </div>
+        <img src={feature.image} alt={feature.imageAlt} style={styles.featureImg} />
+      </div>
     </div>
   );
 }
 
 // ── Main Component ────────────────────────────────────────────────────────────
 const PortfolioDetailContent = ({
-  overview,
   features,
   screenshots,
   ctaTitle,
@@ -90,94 +61,279 @@ const PortfolioDetailContent = ({
   platforms = ['Web', 'iOS', 'Android', 'Desktop'],
 }: PortfolioDetailContentProps) => {
   const platformIcons: Record<string, React.ReactNode> = {
-    Web: <Globe className="w-5 h-5" />,
-    iOS: <Smartphone className="w-5 h-5" />,
+    Web:     <Globe     className="w-5 h-5" />,
+    iOS:     <Smartphone className="w-5 h-5" />,
     Android: <Smartphone className="w-5 h-5" />,
-    Desktop: <Monitor className="w-5 h-5" />,
-    Tablet: <Tablet className="w-5 h-5" />,
+    Desktop: <Monitor    className="w-5 h-5" />,
+    Tablet:  <Tablet     className="w-5 h-5" />,
   };
 
   return (
-    <div className="w-full bg-white">
+    <div style={{ background: '#ffffff', fontFamily: 'inherit' }}>
 
-      {/* ── Overview strip ─────────────────────────────────────────────── */}
-      <section className="max-w-4xl mx-auto px-6 lg:px-12 py-16 text-center">
-        <p className="text-gray-500 text-lg leading-relaxed">{overview}</p>
+      {/* ── Alternating feature rows ────────────────────────────────────── */}
+      <section style={styles.featuresSection}>
+        <div className="site-container">
+          {features.map((feature, i) => (
+            <div key={i} className={i < features.length - 1 ? 'mb-12 sm:mb-16 md:mb-20 lg:mb-32' : ''}>
+              <FeatureRow feature={feature} />
+            </div>
+          ))}
+        </div>
       </section>
 
-      {/* ── Alternating Feature Rows ────────────────────────────────────── */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-12 space-y-24 pb-24">
-        {features.map((feature, i) => (
-          <FeatureRow key={i} feature={feature} />
-        ))}
-      </section>
-
-      {/* ── Screenshots Grid ────────────────────────────────────────────── */}
+      {/* ── Screenshots ─────────────────────────────────────────────────── */}
       {screenshots.length > 0 && (
-        <section className="bg-[#fafafa] py-20 px-6 lg:px-12">
-          <div className="max-w-7xl mx-auto">
-            {/* First big row: 2 cols */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <section style={styles.screenshotsSection}>
+          <div className="site-container">
+
+            {/* First row: 2 cols */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
               {screenshots.slice(0, 2).map((s, i) => (
-                <MockupFrame key={i} src={s.src} alt={s.alt} size="lg" />
+                <div key={i} style={styles.screenshotCard}>
+                  <div style={styles.browserBar}>
+                    <span style={styles.dot} /><span style={styles.dot} /><span style={styles.dot} />
+                    <div style={styles.urlBar} />
+                  </div>
+                  <img src={s.src} alt={s.alt} style={styles.screenshotImg} />
+                </div>
               ))}
             </div>
+
             {/* Second row: 3 cols */}
             {screenshots.length > 2 && (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
                 {screenshots.slice(2, 5).map((s, i) => (
-                  <MockupFrame key={i} src={s.src} alt={s.alt} size="sm" />
+                  <div key={i} style={{ ...styles.screenshotCard, aspectRatio: '4/3' }}>
+                    <div style={styles.browserBar}>
+                      <span style={styles.dot} /><span style={styles.dot} /><span style={styles.dot} />
+                      <div style={styles.urlBar} />
+                    </div>
+                    <img src={s.src} alt={s.alt} style={styles.screenshotImg} />
+                  </div>
                 ))}
               </div>
             )}
+
           </div>
         </section>
       )}
 
-      {/* ── CTA / Conclusion ─────────────────────────────────────────────── */}
-      <section className="w-full py-20 text-center bg-white border-t border-gray-100">
-        <div className="max-w-2xl mx-auto px-6 flex flex-col items-center gap-6">
+      {/* ── CTA ─────────────────────────────────────────────────────────── */}
+      <section style={styles.ctaSection}>
+        <div style={styles.ctaInner}>
 
           {/* Platform icons */}
-          <div className="flex items-center gap-4">
+          <div style={styles.platformRow}>
             {platforms.map((p) => (
-              <div
-                key={p}
-                className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center text-gray-500"
-                title={p}
-              >
+              <div key={p} style={styles.platformIcon} title={p}>
                 {platformIcons[p] ?? <Globe className="w-5 h-5" />}
               </div>
             ))}
           </div>
 
-          {/* Thin divider */}
-          <div className="w-12 h-px bg-gray-200" />
+          {/* Thin rule */}
+          <div style={styles.ctaDivider} />
 
           {/* Title */}
-          <h2 className="text-3xl md:text-4xl font-bold text-black leading-tight">
-            {ctaTitle}
-          </h2>
+          <h2 style={styles.ctaTitle}>{ctaTitle}</h2>
 
-          {ctaSubtitle && (
-            <p className="text-gray-500 text-base">{ctaSubtitle}</p>
-          )}
+          {ctaSubtitle && <p style={styles.ctaSubtitle}>{ctaSubtitle}</p>}
 
-          {/* Link */}
           {ctaLink && (
             <a
-              href={ctaLink}
+              href={`https://${ctaLink}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-semibold underline underline-offset-4 text-[#c85a3b] hover:text-[#a04530] transition-colors duration-200"
+              style={styles.ctaLink}
             >
               {ctaLink}
             </a>
           )}
         </div>
       </section>
+
     </div>
   );
+};
+
+/* ─── styles ────────────────────────────────────────────────────────────────── */
+const styles: Record<string, React.CSSProperties> = {
+  container: {
+    maxWidth: '1180px',
+    margin: '0 auto',
+    padding: '0 5%',
+  },
+
+  /* feature rows */
+  featuresSection: {
+    paddingTop: '3rem',
+    paddingBottom: '3rem',
+  },
+
+  featureTitle: {
+    fontSize: 'clamp(1.6rem, 3vw, 2.6rem)',
+    fontWeight: 700,
+    lineHeight: 1.15,
+    letterSpacing: '-0.025em',
+    color: '#111111',
+    margin: 0,
+  },
+
+  featureBody: {
+    fontSize: '0.92rem',
+    lineHeight: 1.8,
+    color: '#777777',
+    margin: 0,
+    maxWidth: '44ch',
+  },
+
+  featureImgWrap: {
+    borderRadius: '16px',
+    overflow: 'hidden',
+    background: '#f4f4f5',
+    border: '1px solid #e5e5e5',
+    boxShadow: '0 8px 40px rgba(0,0,0,0.07)',
+  },
+
+  /* browser bar */
+  browserBar: {
+    height: '32px',
+    background: '#f0f0f0',
+    display: 'flex',
+    alignItems: 'center',
+    padding: '0 12px',
+    gap: '6px',
+    borderBottom: '1px solid #e5e5e5',
+  },
+
+  dot: {
+    width: '10px',
+    height: '10px',
+    borderRadius: '50%',
+    background: '#d5d5d5',
+    display: 'inline-block',
+  },
+
+  urlBar: {
+    flex: 1,
+    height: '16px',
+    borderRadius: '99px',
+    background: '#ffffff',
+    border: '1px solid #e5e5e5',
+    marginLeft: '8px',
+  },
+
+  featureImg: {
+    width: '100%',
+    display: 'block',
+    objectFit: 'cover',
+  },
+
+  /* screenshots */
+  screenshotsSection: {
+    background: '#fafafa',
+    paddingTop: '5rem',
+    paddingBottom: '5rem',
+    borderTop: '1px solid #eeeeee',
+    borderBottom: '1px solid #eeeeee',
+  },
+
+  screenshotRow2: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: '1.5rem',
+    marginBottom: '1.5rem',
+  },
+
+  screenshotRow3: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gap: '1.5rem',
+  },
+
+  screenshotCard: {
+    borderRadius: '16px',
+    overflow: 'hidden',
+    background: '#ffffff',
+    border: '1px solid #e5e5e5',
+    boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
+    aspectRatio: '16/10',
+  },
+
+  screenshotImg: {
+    width: '100%',
+    height: 'calc(100% - 32px)',
+    objectFit: 'cover',
+    display: 'block',
+  },
+
+  /* CTA */
+  ctaSection: {
+    paddingTop: '6rem',
+    paddingBottom: '6rem',
+    background: '#ffffff',
+    textAlign: 'center' as const,
+  },
+
+  ctaInner: {
+    maxWidth: '560px',
+    margin: '0 auto',
+    padding: '0 5%',
+    display: 'flex',
+    flexDirection: 'column' as const,
+    alignItems: 'center',
+    gap: '1.5rem',
+  },
+
+  platformRow: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.75rem',
+  },
+
+  platformIcon: {
+    width: '42px',
+    height: '42px',
+    borderRadius: '12px',
+    background: '#f4f4f5',
+    border: '1px solid #e5e5e5',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: '#555555',
+  },
+
+  ctaDivider: {
+    width: '40px',
+    height: '1px',
+    background: '#dddddd',
+  },
+
+  ctaTitle: {
+    fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)',
+    fontWeight: 700,
+    letterSpacing: '-0.025em',
+    lineHeight: 1.15,
+    color: '#111111',
+    margin: 0,
+  },
+
+  ctaSubtitle: {
+    fontSize: '0.9rem',
+    color: '#888888',
+    margin: 0,
+    lineHeight: 1.7,
+  },
+
+  ctaLink: {
+    fontSize: '0.85rem',
+    fontWeight: 600,
+    color: '#111111',
+    textDecoration: 'underline',
+    textUnderlineOffset: '4px',
+    letterSpacing: '0.01em',
+  },
 };
 
 export default PortfolioDetailContent;

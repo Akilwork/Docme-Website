@@ -64,9 +64,9 @@ const projects = [
 
 const PortfolioSection = () => {
   return (
-    <section className="w-full bg-white pb-24 md:pb-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
+    <section className="w-full bg-white pb-16 sm:pb-20 md:pb-24 lg:pb-32">
+      <div className="site-container">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 sm:gap-x-8 gap-y-10 sm:gap-y-12 md:gap-y-16">
           {projects.map((project) => (
             <Link
               key={project.id}

@@ -9,9 +9,13 @@ module.exports = {
     extend: {
       maxWidth: {
         'site': '1280px',
+        '8xl': '1440px',
       },
       padding: {
-        'site': '1.5rem', // 24px consistent horizontal padding
+        'site':    '5rem',    // 80px — desktop container padding (matches --container-px)
+        'site-md': '3rem',    // 48px — medium breakpoint
+        'site-sm': '2rem',    // 32px — tablet breakpoint
+        'site-xs': '1.25rem', // 20px — mobile breakpoint
       },
       colors: {
         primary: {

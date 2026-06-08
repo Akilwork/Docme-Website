@@ -47,19 +47,19 @@ const ProductShowcase = () => {
   ]
 
   return (
-    <section className="section-spacing relative overflow-hidden">
+    <section className="section-spacing relative overflow-hidden bg-[#080808]">
       {/* Background */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-site mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative site-container">
 
 
 
         {/* Main Two-Column Layout */}
-        <div className="grid lg:grid-cols-[1fr_1.15fr] gap-12 xl:gap-20 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-10 sm:gap-12 xl:gap-20 items-start">
 
           {/* ── Left Column: Title · Stats · CTA ── */}
           <motion.div
@@ -67,18 +67,18 @@ const ProductShowcase = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:sticky lg:top-28 space-y-10"
+            className="lg:sticky lg:top-28 space-y-8 sm:space-y-10"
           >
             {/* Headline */}
             <div className="space-y-5">
-              <h2 className="text-5xl xl:text-[3.6rem] font-bold font-jakarta leading-[1.1] tracking-tight text-white">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.6rem] font-bold font-jakarta leading-[1.1] tracking-tight text-white">
                 Next Generation
                 <br />
                 School Management
                 <br />
                 Platform
               </h2>
-              <p className="text-base text-gray-400 leading-relaxed max-w-[26rem]">
+              <p className="text-sm sm:text-base text-gray-400 leading-relaxed max-w-[26rem]">
                 Experience the future of educational management with our comprehensive
                 platform that seamlessly integrates every aspect of institutional
                 operations into one intelligent ecosystem.

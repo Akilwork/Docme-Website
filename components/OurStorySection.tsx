@@ -6,8 +6,8 @@ export default function OurStorySection() {
       {/* Subtle ambient glow */}
       <div className="absolute inset-0 pointer-events-none" />
 
-      <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+      <div className="site-container relative z-10">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
 
           {/* ── Left: Text ── */}
           <div className="flex-1 min-w-0">
@@ -37,10 +37,10 @@ export default function OurStorySection() {
           </div>
 
           {/* ── Right: Blended video ── */}
-          <div className="flex-shrink-0 w-full lg:w-auto flex items-center justify-center">
+          <div className="flex-shrink-0 w-full lg:w-auto flex items-center justify-center mt-4 lg:mt-0">
             <div
-              className="relative"
-              style={{ width: 'clamp(260px, 36vw, 460px)', aspectRatio: '1 / 1' }}
+              className="relative mx-auto"
+              style={{ width: 'clamp(220px, 70vw, 420px)', aspectRatio: '1 / 1' }}
             >
               <video
                 className="w-full h-full object-cover block rounded-full"
@@ -53,7 +53,7 @@ export default function OurStorySection() {
               />
 
               {/* Stats badge */}
-              <div className="absolute bottom-[10%] right-[-4%] flex items-center gap-2.5 px-4 py-2.5 rounded-[10px] z-10"
+              <div className="absolute bottom-[10%] right-[2%] sm:right-[-2%] flex items-center gap-2.5 px-3 sm:px-4 py-2 sm:py-2.5 rounded-[10px] z-10"
                 style={{
                   background: 'rgba(10, 10, 20, 0.82)',
                   backdropFilter: 'blur(12px)',

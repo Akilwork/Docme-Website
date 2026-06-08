@@ -326,6 +326,166 @@ const projects = [
     ctaLink: 'greenleaforganics.com',
     platforms: ['Web', 'Desktop'],
   },
+  {
+    id: 7,
+    slug: 'class-control',
+    title: 'Class Control',
+    description: 'Manage attendance, timetable, and fees right from your pocket.',
+    overview:
+      'Class Control is a mobile-first school management app that puts attendance tracking, timetable management, and fee collection in the hands of teachers and administrators.',
+    tags: ['MOBILE APP', 'MANAGEMENT'],
+    image: '/assets/Feature/10%20(dark,%20light,%20color).jpg',
+    client: 'Docme',
+    year: '2024',
+    role: 'Product Design & Dev',
+    features: [
+      {
+        title: 'Attendance at a tap',
+        description:
+          'Mark present, absent, or late for every student in seconds. Real-time sync means the office always has the latest data without a single paper register.',
+        image: '/assets/Feature/10%20(dark,%20light,%20color).jpg',
+        imageAlt: 'Class Control attendance screen',
+        reverse: false,
+      },
+      {
+        title: 'Timetables that update themselves',
+        description:
+          'Drag-and-drop scheduling with automatic conflict detection. When a teacher is absent, substitutes are suggested and parents are notified instantly.',
+        image: '/assets/Feature/School%20Dairy%20V2.1%201.jpg',
+        imageAlt: 'Class Control timetable view',
+        reverse: true,
+      },
+    ],
+    screenshots: [
+      { src: '/assets/Feature/10%20(dark,%20light,%20color).jpg', alt: 'Dashboard overview' },
+      { src: '/assets/Feature/School%20Dairy%20V2.1%201.jpg', alt: 'Attendance module' },
+      { src: '/assets/Feature/Canteen.jpg', alt: 'Fee management' },
+    ],
+    ctaTitle: 'Experience Class Control by yourself',
+    ctaSubtitle: 'School management reimagined for the mobile era.',
+    ctaLink: 'docme.in/class-control',
+    platforms: ['iOS', 'Android'],
+  },
+  {
+    id: 8,
+    slug: 'school-dairy',
+    title: 'School Dairy',
+    description: 'Learning, academics, and campus life unified in one student app.',
+    overview:
+      'School Dairy brings together homework, grades, notices, and event calendars into a single intuitive app for students and parents — reducing friction and keeping everyone informed.',
+    tags: ['STUDENT PORTAL', 'WEB DESIGN'],
+    image: '/assets/Feature/School%20Dairy%20V2.1%201.jpg',
+    client: 'Docme',
+    year: '2024',
+    role: 'UI / UX Design & Dev',
+    features: [
+      {
+        title: 'Your academic life, organised',
+        description:
+          'Assignments, exam schedules, and result cards all in one place. Students never miss a deadline and parents always know what is coming next.',
+        image: '/assets/Feature/School%20Dairy%20V2.1%201.jpg',
+        imageAlt: 'School Dairy academic view',
+        reverse: false,
+      },
+      {
+        title: 'Campus life beyond the classroom',
+        description:
+          'Event announcements, club activities, and school notices flow into a single feed so students stay connected to campus life even when off-site.',
+        image: '/assets/Feature/dash.jpg',
+        imageAlt: 'School Dairy campus feed',
+        reverse: true,
+      },
+    ],
+    screenshots: [
+      { src: '/assets/Feature/School%20Dairy%20V2.1%201.jpg', alt: 'Home dashboard' },
+      { src: '/assets/Feature/dash.jpg', alt: 'Grades view' },
+      { src: '/assets/Feature/10%20(dark,%20light,%20color).jpg', alt: 'Calendar screen' },
+    ],
+    ctaTitle: 'Experience School Dairy by yourself',
+    ctaSubtitle: 'The student companion built for modern campuses.',
+    ctaLink: 'docme.in/school-dairy',
+    platforms: ['iOS', 'Android', 'Web'],
+  },
+  {
+    id: 9,
+    slug: 'bm-canteen',
+    title: 'BM Canteen',
+    description: 'Real-time order tracking and smart sales management for school cafeterias.',
+    overview:
+      'BM Canteen digitises the entire cafeteria workflow — from student pre-ordering to kitchen fulfilment and end-of-day financial reporting — eliminating queues and cash handling.',
+    tags: ['MANAGEMENT', 'DEVELOPMENT'],
+    image: '/assets/Feature/Canteen.jpg',
+    client: 'Docme',
+    year: '2023',
+    role: 'Product Design & Development',
+    features: [
+      {
+        title: 'Order before you arrive',
+        description:
+          'Students pre-order from a digital menu each morning. The kitchen sees a live queue, reduces waste, and has meals ready exactly when students arrive.',
+        image: '/assets/Feature/Canteen.jpg',
+        imageAlt: 'BM Canteen order screen',
+        reverse: false,
+      },
+      {
+        title: 'Sales insights that drive better menus',
+        description:
+          'Daily, weekly, and monthly reports surface the most popular items, peak hours, and revenue trends so canteen managers can plan smarter.',
+        image: '/assets/Feature/dash.jpg',
+        imageAlt: 'BM Canteen analytics',
+        reverse: true,
+      },
+    ],
+    screenshots: [
+      { src: '/assets/Feature/Canteen.jpg', alt: 'Menu screen' },
+      { src: '/assets/Feature/dash.jpg', alt: 'Sales dashboard' },
+      { src: '/assets/Feature/School%20Dairy%20V2.1%201.jpg', alt: 'Order history' },
+    ],
+    ctaTitle: 'Experience BM Canteen by yourself',
+    ctaSubtitle: 'Zero queues. Smarter kitchens. Happier students.',
+    ctaLink: 'docme.in/bm-canteen',
+    platforms: ['iOS', 'Android', 'Web'],
+  },
+  {
+    id: 10,
+    slug: 'smart-dashboard',
+    title: 'Smart Dashboard',
+    description: 'Unified financial analytics and performance insights at a glance.',
+    overview:
+      'Smart Dashboard consolidates financial data, attendance trends, and academic performance metrics into a single executive-level view for school leadership teams.',
+    tags: ['ANALYTICS', 'WEB DESIGN'],
+    image: '/assets/Feature/dash.jpg',
+    client: 'Docme',
+    year: '2024',
+    role: 'Data Visualisation & UI Design',
+    features: [
+      {
+        title: 'Financial clarity in one view',
+        description:
+          'Fee collection rates, outstanding balances, and monthly revenue curves are presented in clean, scannable charts — no spreadsheet wrangling required.',
+        image: '/assets/Feature/dash.jpg',
+        imageAlt: 'Smart Dashboard finance view',
+        reverse: false,
+      },
+      {
+        title: 'Performance trends across every grade',
+        description:
+          'Compare class averages, spot declining cohorts early, and celebrate high-performing teachers — all with drill-down detail available in two clicks.',
+        image: '/assets/Feature/School%20Dairy%20V2.1%201.jpg',
+        imageAlt: 'Smart Dashboard performance view',
+        reverse: true,
+      },
+    ],
+    screenshots: [
+      { src: '/assets/Feature/dash.jpg', alt: 'Overview screen' },
+      { src: '/assets/Feature/School%20Dairy%20V2.1%201.jpg', alt: 'Academic analytics' },
+      { src: '/assets/Feature/10%20(dark,%20light,%20color).jpg', alt: 'Mobile view' },
+    ],
+    ctaTitle: 'Experience Smart Dashboard by yourself',
+    ctaSubtitle: 'Data-driven decisions for every school leader.',
+    ctaLink: 'docme.in/smart-dashboard',
+    platforms: ['Web', 'Desktop'],
+  },
 ];
 
 // ── Related project gallery ───────────────────────────────────────────────────

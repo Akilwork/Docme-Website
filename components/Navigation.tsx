@@ -14,22 +14,25 @@ const Navigation = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
-      
+      const delta = currentScrollY - lastScrollY.current
+
       // Update scrolled state for background blur effect
       setScrolled(currentScrollY > 20)
-      
-      // Hide/show navigation based on scroll direction
-      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-        // Scrolling down & past 100px
+
+      if (currentScrollY <= 10) {
+        // Always show at the very top
+        setVisible(true)
+      } else if (delta > 5 && currentScrollY > 100) {
+        // Scrolling down past threshold — hide navbar
         setVisible(false)
-      } else {
-        // Scrolling up or at top
+      } else if (delta < -5) {
+        // Scrolling up — show navbar
         setVisible(true)
       }
-      
+
       lastScrollY.current = currentScrollY
     }
-    
+
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -45,17 +48,15 @@ const Navigation = () => {
   return (
     <motion.nav
       initial={{ y: -100 }}
-      animate={{ 
-        y: visible ? 0 : -100,
-        transition: { duration: 0.3, ease: 'easeInOut' }
-      }}
+      animate={{ y: visible ? 0 : -100 }}
+      transition={{ duration: 0.35, ease: 'easeInOut' }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
           ? 'bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-slate-800' 
           : 'bg-slate-900/90 backdrop-blur-sm'
       }`}
     >
-      <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <motion.div
@@ -75,16 +76,28 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link key={item.name} href={item.href} passHref legacyBehavior>
+            {navItems.map((item) =>
+              item.name === 'Home' ? (
                 <motion.a
+                  key={item.name}
+                  href={item.href}
                   whileHover={{ y: -2 }}
                   className="text-slate-300 hover:text-white transition-colors duration-200 cursor-pointer font-medium"
+                  onClick={(e) => { e.preventDefault(); window.location.href = '/' }}
                 >
                   {item.name}
                 </motion.a>
-              </Link>
-            ))}
+              ) : (
+                <Link key={item.name} href={item.href} passHref legacyBehavior>
+                  <motion.a
+                    whileHover={{ y: -2 }}
+                    className="text-slate-300 hover:text-white transition-colors duration-200 cursor-pointer font-medium"
+                  >
+                    {item.name}
+                  </motion.a>
+                </Link>
+              )
+            )}
           </div>
 
           {/* Login Button */}
@@ -121,16 +134,27 @@ const Navigation = () => {
             className="md:hidden bg-slate-900/95 backdrop-blur-md border-t border-slate-800"
           >
             <div className="px-4 py-4 space-y-3">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-all duration-200 cursor-pointer"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
+              {navItems.map((item) =>
+                item.name === 'Home' ? (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className="block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-all duration-200 cursor-pointer"
+                    onClick={(e) => { e.preventDefault(); window.location.href = '/' }}
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-all duration-200 cursor-pointer"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                )
+              )}
               <div className="pt-3 border-t border-slate-800">
                 <button className="w-full px-3 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg font-medium transition-colors duration-200 cursor-pointer">
                   Login

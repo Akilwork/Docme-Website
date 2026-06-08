@@ -2,6 +2,7 @@ import Navigation from '@/components/Navigation'
 import HeroSection from '@/components/HeroSection'
 import TrustedBrands from '@/components/TrustedBrands'
 import BusinessModelSection from '@/components/BusinessModelSection'
+import ImpactSection from '@/components/ImpactSection'
 import EcosystemSection from '@/components/EcosystemSection'
 import BentoGridSection from '@/components/BentoGridSection'
 import ServicesSection from '@/components/ServicesSection'
@@ -24,7 +25,8 @@ export default function Home() {
         <Navigation />
         <HeroSection />
         <TrustedBrands />
-        <BusinessModelSection />
+        {/* <BusinessModelSection /> */}
+        <ImpactSection />
         <EcosystemSection />
         <BentoGridSection />
         <OurStorySection />

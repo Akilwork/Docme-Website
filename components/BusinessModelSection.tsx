@@ -47,7 +47,7 @@ const BusinessModelSection = () => {
       {/* Background */}
       <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #4a3e96 0%, #3a2f7a 50%, #2d2460 100%)' }} />
 
-      <div className="relative max-w-site mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative site-container">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

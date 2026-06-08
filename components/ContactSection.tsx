@@ -71,9 +71,9 @@ export default function ContactSection() {
   }
 
   return (
-    <section className="w-full bg-[#F5F5F7] py-20 md:py-28">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-24">
+    <section className="w-full bg-[#F5F5F7] py-14 sm:py-20 md:py-28">
+      <div className="site-container">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-24">
 
           {/* ── Left Sidebar ── */}
           <div className="lg:col-span-2 flex flex-col justify-between gap-12">
