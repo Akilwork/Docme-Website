@@ -14,8 +14,8 @@ const services = [
       'Academic Planning',
       'Grade Management',
     ],
-    image: '/assets/Feature/dash.jpg',
-    hoverImage: '/assets/Feature/dash1.jpg',
+    image: '/assets/Feature/School Dairy V2.1 1.jpg',
+    hoverImage: '/assets/Feature/10 (dark, light, color).jpg',
   },
   {
     id: 'business-management',
@@ -42,8 +42,8 @@ const services = [
       'SaaS Platform Development',
       'API Integration Services',
     ],
-    image: '/assets/Feature/dash1.jpg',
-    hoverImage: '/assets/Feature/BM One.jpg',
+    image: '/assets/Feature/dash.jpg',
+    hoverImage: '/assets/Feature/dash1.jpg',
   },
 ]
 
@@ -70,19 +70,14 @@ const ServicesSection = () => {
             <div
               key={service.id}
               onClick={() => router.push('/services')}
-              className="group bg-white rounded-[24px] sm:rounded-[28px] lg:rounded-[32px] p-2 sm:p-2.5 cursor-pointer hover:shadow-2xl transition-all duration-300 border border-gray-100 flex flex-col"
+              className="group bg-white rounded-[24px] sm:rounded-[28px] lg:rounded-[32px] p-2 sm:p-2.5 cursor-pointer transition-all duration-300 border border-gray-100 flex flex-col"
             >
               {/* Image — aspect-ratio based, no fixed height */}
               <div className="relative w-full aspect-[4/3] rounded-[16px] sm:rounded-[20px] overflow-hidden flex-shrink-0">
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 opacity-100 group-hover:opacity-0"
-                />
-                <img
-                  src={service.hoverImage}
-                  alt={service.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0 group-hover:opacity-100 group-hover:scale-105"
+                  className="w-full h-full object-cover"
                 />
               </div>
 

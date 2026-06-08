@@ -115,7 +115,7 @@ const CaseCard = ({ img, alt, slug, title, description }: CaseCardProps) => {
         style={{ textDecoration: 'none' }}
       >
         {/* Image */}
-        <div className="relative w-full aspect-[4/3] bg-gray-100 mb-6 overflow-hidden rounded-[16px]">
+        <div className="relative w-full aspect-[16/10] bg-gray-100 mb-6 overflow-hidden rounded-[16px]">
           <img
             src={img}
             alt={alt}
@@ -215,7 +215,7 @@ const styles: Record<string, React.CSSProperties> = {
   imageWrap: {
     position: 'relative',
     width: '100%',
-    aspectRatio: '4 / 3',
+    aspectRatio: '16 / 10',
     overflow: 'hidden',
     borderRadius: '16px',
     background: '#f0f0f0',
