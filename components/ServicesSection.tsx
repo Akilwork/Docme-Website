@@ -5,45 +5,39 @@ import { useRouter } from 'next/navigation'
 const services = [
   {
     id: 'education-institution',
-    tag: 'Education & Institution',
     title: 'Education & Institution Solutions',
     description:
-      'Comprehensive digital solutions designed to transform every aspect of institutional management and operational excellence.',
+      'Empower educational institutions with smart digital solutions that streamline operations, enhance engagement, and improve learning experiences',
     features: [
       'Student Information System',
       'Academic Planning',
       'Grade Management',
     ],
     image: '/assets/Feature/School Dairy V2.1 1.jpg',
-    hoverImage: '/assets/Feature/10 (dark, light, color).jpg',
   },
   {
     id: 'business-management',
-    tag: 'Business Management',
-    title: 'Business Management Solutions',
+    title: 'Administration & Operations',
     description:
-      'End-to-end enterprise tools to manage operations, automate workflows, and drive measurable growth across all business units.',
+      'Streamline operations with a centralized platform that enhances productivity, automates workflows, and enables smarter decision-making.',
     features: [
       'Multi-branch ERP',
       'Inventory & Supply Chain',
       'CRM & Sales Automation',
     ],
     image: '/assets/Feature/BM One.jpg',
-    hoverImage: '/assets/Feature/Canteen.jpg',
   },
   {
     id: 'cloud-digital',
-    tag: 'Cloud & Digital',
     title: 'Cloud & Digital Solutions',
     description:
-      'Scalable cloud-native platforms that enable seamless digital experiences, remote collaboration and operational continuity.',
+      'Accelerate digital transformation with secure, scalable cloud solutions that enhance efficiency, collaboration, and business growth..',
     features: [
       'Cloud Migration & Hosting',
       'SaaS Platform Development',
       'API Integration Services',
     ],
     image: '/assets/Feature/dash.jpg',
-    hoverImage: '/assets/Feature/dash1.jpg',
   },
 ]
 
@@ -60,7 +54,7 @@ const ServicesSection = () => {
             Services
           </h2>
           <p className="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto">
-            Every project we deliver is a reflection of our commitment to quality, designed to inspire and drive success.
+            Docme delivers smart digital and cloud solutions that drive efficiency, innovation, and business growth.
           </p>
         </div>
 

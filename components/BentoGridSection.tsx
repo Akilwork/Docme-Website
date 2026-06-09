@@ -9,7 +9,7 @@ const cases = [
     img: '/assets/Feature/10 (dark, light, color).jpg',
     alt: 'Class Control Mobile App',
     slug: 'class-control',
-    title: 'Class Control',
+    title: 'Teacher App',
     description: 'Manage attendance, timetable, and fees right from your pocket.',
   },
   {
