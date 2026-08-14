@@ -12,25 +12,23 @@ const Navigation = () => {
   const lastScrollY = useRef(0)
 
   useEffect(() => {
+    let lastY = typeof window !== 'undefined' ? window.scrollY : 0
+
     const handleScroll = () => {
-      const currentScrollY = window.scrollY
-      const delta = currentScrollY - lastScrollY.current
+      const currentY = window.scrollY
 
-      // Update scrolled state for background blur effect
-      setScrolled(currentScrollY > 20)
+      setScrolled(currentY > 20)
 
-      if (currentScrollY <= 10) {
-        // Always show at the very top
+      if (currentY <= 10) {
         setVisible(true)
-      } else if (delta > 5 && currentScrollY > 100) {
-        // Scrolling down past threshold — hide navbar
+        lastY = currentY
+      } else if (currentY > lastY + 10) {
         setVisible(false)
-      } else if (delta < -5) {
-        // Scrolling up — show navbar
+        lastY = currentY
+      } else if (currentY < lastY - 2) {
         setVisible(true)
+        lastY = currentY
       }
-
-      lastScrollY.current = currentScrollY
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
@@ -57,7 +55,7 @@ const Navigation = () => {
       }`}
     >
       <div className="site-container">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.02 }}
@@ -98,20 +96,6 @@ const Navigation = () => {
                 </Link>
               )
             )}
-          </div>
-
-          {/* Login Button */}
-          <div className="hidden md:flex items-center">
-            <motion.button
-              whileHover={{ 
-                scale: 1.05,
-                boxShadow: '0 0 20px rgba(99, 102, 241, 0.5)'
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg font-medium transition-all duration-200 cursor-pointer"
-            >
-              Login
-            </motion.button>
           </div>
 
           {/* Mobile menu button */}
@@ -155,11 +139,6 @@ const Navigation = () => {
                   </Link>
                 )
               )}
-              <div className="pt-3 border-t border-slate-800">
-                <button className="w-full px-3 py-2 bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg font-medium transition-colors duration-200 cursor-pointer">
-                  Login
-                </button>
-              </div>
             </div>
           </motion.div>
         )}

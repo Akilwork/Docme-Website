@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 const services = [
   {
     id: 'education-institution',
+    tag: 'Education',
     title: 'Education & Institution Solutions',
     description:
       'Empower educational institutions with smart digital solutions that streamline operations, enhance engagement, and improve learning experiences',
@@ -17,6 +18,7 @@ const services = [
   },
   {
     id: 'business-management',
+    tag: 'Business',
     title: 'Administration & Operations',
     description:
       'Streamline operations with a centralized platform that enhances productivity, automates workflows, and enables smarter decision-making.',
@@ -29,6 +31,7 @@ const services = [
   },
   {
     id: 'cloud-digital',
+    tag: 'Cloud',
     title: 'Cloud & Digital Solutions',
     description:
       'Accelerate digital transformation with secure, scalable cloud solutions that enhance efficiency, collaboration, and business growth..',
