@@ -1,92 +1,48 @@
 'use client'
 
-import { useState, useEffect, useLayoutEffect } from 'react'
-import { LoadingScreen, LOADING_CONFIG } from './LoadingConfig'
-import PreloadManager from './PreloadManager'
-
-// Marks that the loading screen has already been shown in this browser session.
-// Using sessionStorage means: first mount shows the loader, every subsequent
-// refresh (same tab) skips it. A brand-new tab/session shows it again.
-const SESSION_KEY = 'docme_has_loaded'
-
-// useLayoutEffect on the client (runs before paint, so no loader flash on
-// refresh), but fall back to useEffect during SSR to avoid the React warning.
-const useIsomorphicLayoutEffect =
-  typeof window !== 'undefined' ? useLayoutEffect : useEffect
+import { useState, useEffect } from 'react'
+import LoadingScreen from './LoadingScreen'
 
 interface ClientWrapperProps {
   children: React.ReactNode
 }
 
 export default function ClientWrapper({ children }: ClientWrapperProps) {
-  const [isLoading, setIsLoading] = useState(false)
-  const [showContent, setShowContent] = useState(true)
-  const [preloadComplete, setPreloadComplete] = useState(false)
-  const [minTimeComplete, setMinTimeComplete] = useState(false)
+  // Show loader only on the very first visit of the browser session.
+  // Once the loader completes, we write a flag to sessionStorage so it
+  // is skipped on every subsequent page load within the same session.
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
-  const handleLoadingComplete = () => {
-    // Only complete loading when both preload and minimum time are done
-    if (preloadComplete && minTimeComplete) {
+  useEffect(() => {
+    if (window.location.search.includes('skipLoader') || sessionStorage.getItem('docme_loaded') === 'true') {
       setIsLoading(false)
-      setShowContent(true)
-    }
-  }
-
-  const handlePreloadComplete = () => {
-    setPreloadComplete(true)
-  }
-
-  // Skip the loader on refreshes within the same session.
-  useIsomorphicLayoutEffect(() => {
-    if (sessionStorage.getItem(SESSION_KEY)) {
-      setIsLoading(false)
-      setShowContent(true)
-      setPreloadComplete(true)
-      setMinTimeComplete(true)
       return
     }
-    // First mount of this session: remember it so refreshes skip the loader.
-    sessionStorage.setItem(SESSION_KEY, 'true')
     setIsLoading(true)
+
+    // Safety timeout: ensure loader never blocks the page longer than 4.2s
+    const safetyTimer = setTimeout(() => {
+      sessionStorage.setItem('docme_loaded', 'true')
+      setIsLoading(false)
+    }, 4200)
+
+    return () => clearTimeout(safetyTimer)
   }, [])
 
-  useEffect(() => {
-    // Ensure minimum loading time for better UX
-    const minLoadTimer = setTimeout(() => {
-      setMinTimeComplete(true)
-    }, LOADING_CONFIG.minLoadTime)
-
-    return () => clearTimeout(minLoadTimer)
-  }, [])
-
-  // Check if loading should complete
-  useEffect(() => {
-    if (preloadComplete && minTimeComplete) {
-      handleLoadingComplete()
-    }
-  }, [preloadComplete, minTimeComplete])
-
-  // Fallback: Show content after maximum wait time to prevent infinite loading
-  useEffect(() => {
-    const fallbackTimer = setTimeout(() => {
-      if (!showContent) {
-        setIsLoading(false)
-        setShowContent(true)
-      }
-    }, 5000) // Show content after 5 seconds maximum
-
-    return () => clearTimeout(fallbackTimer)
-  }, [showContent])
+  const handleLoadingComplete = () => {
+    sessionStorage.setItem('docme_loaded', 'true')
+    setIsLoading(false)
+  }
 
   return (
     <>
-      <PreloadManager onPreloadComplete={handlePreloadComplete} />
-      {isLoading && <LoadingScreen onLoadingComplete={() => {}} />}
-      {showContent && (
-        <div className="animate-fade-in">
-          {children}
-        </div>
+      {isLoading && (
+        <LoadingScreen onLoadingComplete={handleLoadingComplete} />
       )}
+      <div className={isLoading ? 'fixed inset-0 overflow-hidden' : ''}>
+        {children}
+      </div>
     </>
   )
 }
+

@@ -1,7 +1,9 @@
 import Navigation from '@/components/Navigation'
 import AboutSection from '@/components/AboutSection'
+import OurTeamSection from '@/components/OurTeamSection'
 import AboutVideoSection from '@/components/AboutVideoSection'
 import AboutStatsSection from '@/components/AboutStatsSection'
+import GallerySection from '@/components/GallerySection'
 import ImpactSection from '@/components/ImpactSection'
 import InsightSection from '@/components/InsightSection'
 import Footer from '@/components/Footer'
@@ -13,8 +15,10 @@ export default function AboutPage() {
         <div className="pt-20">
           <AboutSection />
         </div>
+        <OurTeamSection />
         <AboutVideoSection />
         <AboutStatsSection />
+        <GallerySection />
         <ImpactSection />
         <InsightSection />
         

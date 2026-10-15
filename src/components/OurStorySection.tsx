@@ -43,13 +43,16 @@ export default function OurStorySection() {
               style={{ width: 'clamp(220px, 70vw, 420px)', aspectRatio: '1 / 1' }}
             >
               <video
-                className="w-full h-full object-cover block rounded-full"
+                className="w-full h-full object-cover block rounded-full select-none pointer-events-none"
                 style={{ mixBlendMode: 'screen' }}
                 src="/assets/Our Story/teamcarbon006_pindown.io_1779772021.mp4"
                 autoPlay
                 loop
                 muted
                 playsInline
+                controlsList="nodownload"
+                disablePictureInPicture
+                onContextMenu={(e) => e.preventDefault()}
               />
 
               {/* Stats badge */}

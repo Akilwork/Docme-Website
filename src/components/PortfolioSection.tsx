@@ -7,58 +7,35 @@ import { ArrowUpRight } from 'lucide-react';
 const projects = [
   {
     id: 1,
-    slug: 'radiant-skincare-branding',
-    title: 'Radiant skincare branding',
-    description: 'Radiant skincare is offering a user-centric, ad-free platform.',
-    tags: ['BRANDING', 'WEB DESIGN'],
-    image:
-      'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?q=80&w=2070&auto=format&fit=crop',
+    slug: 'class-control',
+    title: 'Teacher App',
+    description: 'Manage attendance, timetable, and fees right from your pocket.',
+    tags: ['MOBILE APP', 'MANAGEMENT'],
+    image: '/assets/Teacher app/10 (dark, light, color).jpg',
   },
   {
     id: 2,
-    slug: 'apex-clothing-rebrand',
-    title: 'Apex clothing Co. rebrand',
-    description: 'Bold new look for an eco-conscious apparel brand.',
-    tags: ['BRANDING', 'DEVELOPMENT'],
-    image:
-      'https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?q=80&w=2070&auto=format&fit=crop',
+    slug: 'school-dairy',
+    title: 'School Dairy',
+    description: 'Learning, academics, and campus life unified in one student app.',
+    tags: ['STUDENT PORTAL', 'WEB DESIGN'],
+    image: '/assets/School dairy/School Dairy V2.1 1.jpg',
   },
   {
     id: 3,
-    slug: 'vero-app-development',
-    title: 'Vero app development',
-    description:
-      'Vero aimed to distinguish itself in a competitive social media landscape.',
-    tags: ['BRANDING', 'DEVELOPMENT', 'WEB DESIGN'],
-    image:
-      'https://images.unsplash.com/photo-1526498460520-4c246339dccb?q=80&w=2070&auto=format&fit=crop',
+    slug: 'bm-canteen',
+    title: 'BM Canteen',
+    description: 'Real-time order tracking and smart sales management for school cafeterias.',
+    tags: ['MANAGEMENT', 'DEVELOPMENT'],
+    image: '/assets/Canteen/Canteen.jpg',
   },
   {
     id: 4,
-    slug: 'stoyo-branding',
-    title: 'Stoyo branding',
-    description: 'Visual identity and packaging design for a Stoyo brand.',
-    tags: ['BRANDING', 'SUPPORT'],
-    image:
-      'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=2070&auto=format&fit=crop',
-  },
-  {
-    id: 5,
-    slug: 'fintech-dashboard-ui',
-    title: 'Fintech Dashboard UI',
-    description: 'Modern financial analytics interface with dark mode support.',
-    tags: ['UI DESIGN', 'WEB DESIGN'],
-    image:
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop',
-  },
-  {
-    id: 6,
-    slug: 'eco-friendly-packaging',
-    title: 'Eco-Friendly Packaging',
-    description: 'Sustainable product packaging design for organic brands.',
-    tags: ['BRANDING', 'PRINT DESIGN'],
-    image:
-      'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=2070&auto=format&fit=crop',
+    slug: 'smart-dashboard',
+    title: 'Smart Dashboard',
+    description: 'Unified financial analytics and performance insights at a glance.',
+    tags: ['ANALYTICS', 'WEB DESIGN'],
+    image: '/assets/Feature/dash.jpg',
   },
 ];
 
@@ -108,23 +85,7 @@ const PortfolioSection = () => {
               <h3 className="text-2xl font-bold text-black mb-2 group-hover:text-[#6366f1] transition-colors duration-200">
                 {project.title}
               </h3>
-              <p className="text-gray-600 mb-6">{project.description}</p>
-
-              <div className="flex flex-wrap gap-2 mt-auto">
-                {project.tags.map((tag, idx) => (
-                  <span
-                    key={idx}
-                    className="px-3 py-1 text-[11px] font-bold tracking-wider rounded-full transition-all duration-200"
-                    style={{
-                      color: '#6366f1',
-                      border: '1px solid rgba(99,102,241,0.25)',
-                      background: 'rgba(99,102,241,0.08)',
-                    }}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+              <p className="text-gray-600">{project.description}</p>
             </Link>
           ))}
         </div>

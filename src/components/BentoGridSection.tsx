@@ -6,21 +6,21 @@ import Link from 'next/link'
 /* ─── data ─────────────────────────────────────────────────────────────────── */
 const cases = [
   {
-    img: '/assets/Feature/10 (dark, light, color).jpg',
-    alt: 'Class Control Mobile App',
+    img: '/assets/Teacher app/10 (dark, light, color).jpg',
+    alt: 'Teacher App Mobile Platform',
     slug: 'class-control',
     title: 'Teacher App',
     description: 'Manage attendance, timetable, and fees right from your pocket.',
   },
   {
-    img: '/assets/Feature/School Dairy V2.1 1.jpg',
+    img: '/assets/School dairy/School Dairy V2.1 1.jpg',
     alt: 'School Dairy Student Portal',
     slug: 'school-dairy',
     title: 'School Dairy',
     description: 'Learning, academics, and campus life unified in one student app.',
   },
   {
-    img: '/assets/Feature/Canteen.jpg',
+    img: '/assets/Canteen/Canteen.jpg',
     alt: 'BM Canteen Management',
     slug: 'bm-canteen',
     title: 'BM Canteen',

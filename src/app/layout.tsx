@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
+import ClientWrapper from '@/components/ClientWrapper'
 import './globals.css'
 
 const inter = Inter({ 
@@ -46,26 +47,28 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jakarta.variable}`} suppressHydrationWarning>
       <body className={`${inter.className} antialiased bg-navy-900 text-white overflow-x-clip`}>
-        <div className="relative min-h-screen">
-          {/* Background mesh gradient */}
-          <div className="fixed inset-0 mesh-bg opacity-10 pointer-events-none" />
-          
-          {/* Floating particles — deterministic positions to avoid SSR hydration mismatch */}
-          <div className="particles">
-            {Array.from({ length: 20 }).map((_, i) => (
-              <div
-                key={i}
-                className="particle"
-                style={{
-                  left: `${((i * 47.3 + 13.7) % 97).toFixed(4)}%`,
-                  animationDelay: `${((i * 1.3) % 8).toFixed(2)}s`,
-                  animationDuration: `${(8 + (i * 0.7) % 4).toFixed(2)}s`,
-                }}
-              />
-            ))}
+        <ClientWrapper>
+          <div className="relative min-h-screen">
+            {/* Background mesh gradient */}
+            <div className="fixed inset-0 mesh-bg opacity-10 pointer-events-none" />
+            
+            {/* Floating particles — deterministic positions to avoid SSR hydration mismatch */}
+            <div className="particles">
+              {Array.from({ length: 20 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="particle"
+                  style={{
+                    left: `${((i * 47.3 + 13.7) % 97).toFixed(4)}%`,
+                    animationDelay: `${((i * 1.3) % 8).toFixed(2)}s`,
+                    animationDuration: `${(8 + (i * 0.7) % 4).toFixed(2)}s`,
+                  }}
+                />
+              ))}
+            </div>
+            {children}
           </div>
-          {children}
-        </div>
+        </ClientWrapper>
       </body>
     </html>
   )

@@ -31,8 +31,7 @@ const PortfolioDetailHeader = ({ project }: PortfolioDetailHeaderProps) => {
           </p>
         </div>
 
-        {/* ── Thin divider ── */}
-        <div style={styles.divider} />
+
 
         {/* ── Hero image ── */}
         <div style={styles.heroWrap}>
@@ -43,26 +42,7 @@ const PortfolioDetailHeader = ({ project }: PortfolioDetailHeaderProps) => {
           />
         </div>
 
-        {/* ── Meta row ── */}
-        <div className="flex flex-wrap items-center gap-4 sm:gap-6 md:gap-12 pb-6 md:pb-10 border-b border-gray-200">
-          {[
-            { label: 'Client', value: project.client ?? 'Docme' },
-            { label: 'Year',   value: project.year   ?? '2024'  },
-            { label: 'Role',   value: project.role   ?? 'Design & Dev' },
-          ].map(({ label, value }) => (
-            <div key={label} style={styles.metaItem}>
-              <span style={styles.metaLabel}>{label}</span>
-              <span style={styles.metaValue}>{value}</span>
-            </div>
-          ))}
 
-          {/* Tags on the right */}
-          <div className="flex flex-wrap gap-2 ml-auto">
-            {project.tags.map((tag, i) => (
-              <span key={i} style={styles.tag}>{tag}</span>
-            ))}
-          </div>
-        </div>
 
       </div>
     </section>

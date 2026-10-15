@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { Monitor, Smartphone, Tablet, Globe } from 'lucide-react';
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 interface Feature {
@@ -24,6 +23,11 @@ interface PortfolioDetailContentProps {
 
 // ── Feature Row ──────────────────────────────────────────────────────────────
 function FeatureRow({ feature }: { feature: Feature }) {
+  const isMobileMockup =
+    feature.image.includes('/School dairy/') ||
+    feature.image.includes('/Teacher app/') ||
+    feature.image.toLowerCase().includes('mobile');
+
   return (
     <div
       className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-center ${
@@ -37,16 +41,72 @@ function FeatureRow({ feature }: { feature: Feature }) {
       </div>
 
       {/* Image */}
-      <div style={{ direction: 'ltr', ...styles.featureImgWrap }}>
-        {/* browser bar decoration */}
-        <div style={styles.browserBar}>
-          <span style={styles.dot} />
-          <span style={styles.dot} />
-          <span style={styles.dot} />
-          <div style={styles.urlBar} />
-        </div>
-        <img src={feature.image} alt={feature.imageAlt} style={styles.featureImg} />
+      <div
+        className="flex items-center justify-center w-full"
+        style={{ direction: 'ltr' }}
+      >
+        <img
+          src={feature.image}
+          alt={feature.imageAlt}
+          className={`w-auto h-auto object-contain mx-auto drop-shadow-xl transition-transform duration-500 hover:scale-[1.02] ${
+            isMobileMockup
+              ? 'max-h-[320px] sm:max-h-[360px] md:max-h-[400px] max-w-[240px] sm:max-w-[280px] md:max-w-[320px]'
+              : 'max-h-[400px] sm:max-h-[460px] md:max-h-[500px] max-w-full'
+          }`}
+        />
       </div>
+    </div>
+  );
+}
+
+// ── Screenshot Card ──────────────────────────────────────────────────────────
+function ScreenshotCard({
+  src,
+  alt,
+  title,
+  description,
+  wide = false,
+}: {
+  src: string;
+  alt: string;
+  title?: string;
+  description?: string;
+  wide?: boolean;
+}) {
+  const isPng = src.toLowerCase().endsWith('.png');
+
+  return (
+    <div style={{ ...styles.card, ...(wide ? styles.cardWide : {}) }}>
+      {/* Image area */}
+      <div
+        style={{
+          ...styles.cardImgWrap,
+          padding: isPng ? '32px 24px 0 24px' : '24px 24px 0 24px',
+        }}
+      >
+        <img
+          src={src}
+          alt={alt}
+          style={{
+            ...styles.cardImg,
+            objectFit: isPng ? 'contain' : 'cover',
+            objectPosition: isPng ? 'bottom center' : 'top center',
+            borderRadius: isPng ? '0' : '10px 10px 0 0',
+            maxHeight: isPng ? '92%' : '100%',
+          }}
+        />
+      </div>
+      {/* Text area */}
+      {(title || description) && (
+        <div style={styles.cardBody}>
+          {title && (
+            <p style={styles.cardText}>
+              <strong style={styles.cardTitle}>{title}</strong>
+              {description && <> {description}</>}
+            </p>
+          )}
+        </div>
+      )}
     </div>
   );
 }
@@ -55,19 +115,7 @@ function FeatureRow({ feature }: { feature: Feature }) {
 const PortfolioDetailContent = ({
   features,
   screenshots,
-  ctaTitle,
-  ctaSubtitle,
-  ctaLink,
-  platforms = ['Web', 'iOS', 'Android', 'Desktop'],
 }: PortfolioDetailContentProps) => {
-  const platformIcons: Record<string, React.ReactNode> = {
-    Web:     <Globe     className="w-5 h-5" />,
-    iOS:     <Smartphone className="w-5 h-5" />,
-    Android: <Smartphone className="w-5 h-5" />,
-    Desktop: <Monitor    className="w-5 h-5" />,
-    Tablet:  <Tablet     className="w-5 h-5" />,
-  };
-
   return (
     <div style={{ background: '#ffffff', fontFamily: 'inherit' }}>
 
@@ -82,76 +130,22 @@ const PortfolioDetailContent = ({
         </div>
       </section>
 
-      {/* ── Screenshots ─────────────────────────────────────────────────── */}
+      {/* ── Screenshots — 2x2 grid layout ─────────────────── */}
       {screenshots.length > 0 && (
-        <section style={styles.screenshotsSection}>
+        <section id="screenshots-section" style={styles.screenshotsSection}>
           <div className="site-container">
-
-            {/* First row: 2 cols */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
-              {screenshots.slice(0, 2).map((s, i) => (
-                <div key={i} style={styles.screenshotCard}>
-                  <div style={styles.browserBar}>
-                    <span style={styles.dot} /><span style={styles.dot} /><span style={styles.dot} />
-                    <div style={styles.urlBar} />
-                  </div>
-                  <img src={s.src} alt={s.alt} style={styles.screenshotImg} />
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {screenshots.map((s, i) => (
+                <ScreenshotCard
+                  key={i}
+                  src={s.src}
+                  alt={s.alt}
+                />
               ))}
             </div>
-
-            {/* Second row: 3 cols */}
-            {screenshots.length > 2 && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-                {screenshots.slice(2, 5).map((s, i) => (
-                  <div key={i} style={{ ...styles.screenshotCard, aspectRatio: '4/3' }}>
-                    <div style={styles.browserBar}>
-                      <span style={styles.dot} /><span style={styles.dot} /><span style={styles.dot} />
-                      <div style={styles.urlBar} />
-                    </div>
-                    <img src={s.src} alt={s.alt} style={styles.screenshotImg} />
-                  </div>
-                ))}
-              </div>
-            )}
-
           </div>
         </section>
       )}
-
-      {/* ── CTA ─────────────────────────────────────────────────────────── */}
-      <section style={styles.ctaSection}>
-        <div style={styles.ctaInner}>
-
-          {/* Platform icons */}
-          <div style={styles.platformRow}>
-            {platforms.map((p) => (
-              <div key={p} style={styles.platformIcon} title={p}>
-                {platformIcons[p] ?? <Globe className="w-5 h-5" />}
-              </div>
-            ))}
-          </div>
-
-          {/* Thin rule */}
-          <div style={styles.ctaDivider} />
-
-          {/* Title */}
-          <h2 style={styles.ctaTitle}>{ctaTitle}</h2>
-
-          {ctaSubtitle && <p style={styles.ctaSubtitle}>{ctaSubtitle}</p>}
-
-          {ctaLink && (
-            <a
-              href={`https://${ctaLink}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={styles.ctaLink}
-            >
-              {ctaLink}
-            </a>
-          )}
-        </div>
-      </section>
 
     </div>
   );
@@ -159,13 +153,8 @@ const PortfolioDetailContent = ({
 
 /* ─── styles ────────────────────────────────────────────────────────────────── */
 const styles: Record<string, React.CSSProperties> = {
-  container: {
-    maxWidth: '1180px',
-    margin: '0 auto',
-    padding: '0 5%',
-  },
 
-  /* feature rows */
+  /* ── feature rows ── */
   featuresSection: {
     paddingTop: '3rem',
     paddingBottom: '3rem',
@@ -188,151 +177,85 @@ const styles: Record<string, React.CSSProperties> = {
     maxWidth: '44ch',
   },
 
-  featureImgWrap: {
-    borderRadius: '16px',
-    overflow: 'hidden',
-    background: '#f4f4f5',
-    border: '1px solid #e5e5e5',
-    boxShadow: '0 8px 40px rgba(0,0,0,0.07)',
-  },
-
-  /* browser bar */
-  browserBar: {
-    height: '32px',
-    background: '#f0f0f0',
-    display: 'flex',
-    alignItems: 'center',
-    padding: '0 12px',
-    gap: '6px',
-    borderBottom: '1px solid #e5e5e5',
-  },
-
-  dot: {
-    width: '10px',
-    height: '10px',
-    borderRadius: '50%',
-    background: '#d5d5d5',
-    display: 'inline-block',
-  },
-
-  urlBar: {
-    flex: 1,
-    height: '16px',
-    borderRadius: '99px',
-    background: '#ffffff',
-    border: '1px solid #e5e5e5',
-    marginLeft: '8px',
-  },
-
   featureImg: {
     width: '100%',
     display: 'block',
     objectFit: 'cover',
   },
 
-  /* screenshots */
+  /* ── screenshots section ── */
   screenshotsSection: {
-    background: '#fafafa',
+    background: '#f2f3f5',
     paddingTop: '5rem',
     paddingBottom: '5rem',
-    borderTop: '1px solid #eeeeee',
-    borderBottom: '1px solid #eeeeee',
   },
 
-  screenshotRow2: {
+  /* top row — 2 equal columns */
+  topRow: {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
-    gap: '1.5rem',
-    marginBottom: '1.5rem',
+    gap: '20px',
+    marginBottom: '20px',
   },
 
-  screenshotRow3: {
+  /* bottom row — left-aligned half-width card */
+  bottomRow: {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr',
-    gap: '1.5rem',
+    gridTemplateColumns: '1fr 1fr',
+    gap: '20px',
   },
 
-  screenshotCard: {
-    borderRadius: '16px',
+  /* ── card ── */
+  card: {
+    background: '#ffffff',
+    borderRadius: '20px',
+    border: '1px solid #e8e8e8',
+    boxShadow: '0 2px 16px rgba(0,0,0,0.05)',
     overflow: 'hidden',
-    background: '#ffffff',
-    border: '1px solid #e5e5e5',
-    boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
-    aspectRatio: '16/10',
-  },
-
-  screenshotImg: {
-    width: '100%',
-    height: 'calc(100% - 32px)',
-    objectFit: 'cover',
-    display: 'block',
-  },
-
-  /* CTA */
-  ctaSection: {
-    paddingTop: '6rem',
-    paddingBottom: '6rem',
-    background: '#ffffff',
-    textAlign: 'center' as const,
-  },
-
-  ctaInner: {
-    maxWidth: '560px',
-    margin: '0 auto',
-    padding: '0 5%',
     display: 'flex',
     flexDirection: 'column' as const,
-    alignItems: 'center',
-    gap: '1.5rem',
   },
 
-  platformRow: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '0.75rem',
+  cardWide: {
+    gridColumn: '1 / 2',
   },
 
-  platformIcon: {
-    width: '42px',
-    height: '42px',
-    borderRadius: '12px',
-    background: '#f4f4f5',
-    border: '1px solid #e5e5e5',
+  cardImgWrap: {
+    width: '100%',
+    aspectRatio: '16/10',
+    overflow: 'hidden',
+    background: '#f7f7f7',
+    padding: '24px 24px 0 24px',
+    boxSizing: 'border-box' as const,
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'flex-end',
     justifyContent: 'center',
+  },
+
+  cardImg: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'top',
+    display: 'block',
+    borderRadius: '10px 10px 0 0',
+  },
+
+  cardBody: {
+    padding: '18px 22px 20px',
+  },
+
+  cardText: {
+    margin: 0,
+    fontSize: '0.875rem',
+    lineHeight: 1.65,
     color: '#555555',
   },
 
-  ctaDivider: {
-    width: '40px',
-    height: '1px',
-    background: '#dddddd',
-  },
-
-  ctaTitle: {
-    fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)',
+  cardTitle: {
     fontWeight: 700,
-    letterSpacing: '-0.025em',
-    lineHeight: 1.15,
     color: '#111111',
-    margin: 0,
-  },
-
-  ctaSubtitle: {
-    fontSize: '0.9rem',
-    color: '#888888',
-    margin: 0,
-    lineHeight: 1.7,
-  },
-
-  ctaLink: {
-    fontSize: '0.85rem',
-    fontWeight: 600,
-    color: '#111111',
-    textDecoration: 'underline',
-    textUnderlineOffset: '4px',
-    letterSpacing: '0.01em',
+    fontSize: '0.875rem',
   },
 };
 

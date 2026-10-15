@@ -36,7 +36,7 @@ const HeroSection = () => {
                 transition={{ delay: 0.3 }}
                 className="text-3xl sm:text-4xl lg:text-5xl xl:text-5xl font-semibold text-white leading-tight mb-4 sm:mb-6"
               >
-                Next-Generation Digital Solutions for <span style={{ color: '#6366F1' }}>Education & Business</span>
+                We Deliver the Software You Need, No More No Less
               </motion.h1>
     
               {/* Subtitle */}
@@ -46,7 +46,7 @@ const HeroSection = () => {
                 transition={{ delay: 0.4 }}
                 className="text-base sm:text-xl text-gray-200 mb-6 sm:mb-8 max-w-2xl"
               >
-                DocMe delivers innovative software, smart automation, and enterprise technology services that simplify operations, enhance productivity, and accelerate digital transformation.
+                We Keep Security Above all our Goals. Data Availability is our Mission.
               </motion.p>
 
               {/* CTA Buttons */}

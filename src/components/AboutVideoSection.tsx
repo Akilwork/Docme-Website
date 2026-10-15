@@ -45,7 +45,7 @@ export default function AboutVideoSection() {
           
           <motion.div style={{ scale }} className="absolute inset-0 w-full h-full">
             <video
-              src="/CloudyGraphics_pindown.io_1780315010.mp4"
+              src="/VID-20260823-WA0002.mp4"
               autoPlay 
               loop 
               muted 
